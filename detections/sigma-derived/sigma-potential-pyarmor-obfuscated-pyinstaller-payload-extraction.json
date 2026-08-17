@@ -1,0 +1,75 @@
+{
+  "name": "[Sigma] Potential PyArmor Obfuscated PyInstaller Payload Extraction",
+  "immutable": false,
+  "rule_source": {
+    "type": "internal"
+  },
+  "interval": "5m",
+  "from": "now-9m",
+  "to": "now",
+  "description": "Detects the PyArmor runtime extension being written into a PyInstaller one-file extraction\ndirectory. PyInstaller unpacks to a _MEI prefixed folder at runtime, and the presence of\npyarmor_runtime inside that folder means the bundled Python bytecode was deliberately\nobfuscated before packaging. The combination is common in commodity Python malware and rare\nin software an enterprise buys or builds.\n\nConverted from the Sigma rule 'file_event_win_pyarmor_runtime_in_pyinstaller_extraction.yml' (Sigma id 677086ae-fcc3-4202-93b0-61932ab8ad36, author CTI Team, 2026-08-17).",
+  "tags": [
+    "Sigma",
+    "Source: Sigma rule",
+    "Sigma ID: 677086ae-fcc3-4202-93b0-61932ab8ad36",
+    "Sigma file: file_event_win_pyarmor_runtime_in_pyinstaller_extraction.yml",
+    "attack.stealth",
+    "attack.t1027.002"
+  ],
+  "author": [
+    "CTI Team (Sigma)",
+    "Converted with pySigma 1.5.0 / ecs_windows"
+  ],
+  "license": "DRL",
+  "threat": [
+    {
+      "framework": "MITRE ATT&CK",
+      "tactic": {
+        "id": "TA0005",
+        "name": "Defense Evasion",
+        "reference": "https://attack.mitre.org/tactics/TA0005/"
+      },
+      "technique": [
+        {
+          "id": "T1027",
+          "name": "Obfuscated Files or Information",
+          "reference": "https://attack.mitre.org/techniques/T1027/",
+          "subtechnique": [
+            {
+              "id": "T1027.002",
+              "name": "Software Packing",
+              "reference": "https://attack.mitre.org/techniques/T1027/002/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "related_integrations": [],
+  "required_fields": [],
+  "setup": "",
+  "note": "Converted from Sigma. Original detection logic:\n\n```\nfile_event_win_pyarmor_runtime_in_pyinstaller_extraction.yml\nsigma id: 677086ae-fcc3-4202-93b0-61932ab8ad36\n```\n\nRequires Windows file_event telemetry (Elastic Defend, Agent-shipped Sysmon, or Security 4688 with command-line auditing).",
+  "false_positives": [
+    "Commercial or internal Python applications distributed as PyInstaller bundles with PyArmor licence protection applied. This is the main expected source of noise and is most likely on developer and engineering estates.",
+    "Security or automation tooling packaged by a third party using the same build chain."
+  ],
+  "references": [
+    "https://bazaar.abuse.ch/sample/d97ea10d1dbfe2a69e0d2387e8985635b20628495918abd54c4b052c0acf05b1/",
+    "https://tria.ge/260817-ktkv8swgra"
+  ],
+  "risk_score": 47,
+  "risk_score_mapping": [],
+  "severity": "medium",
+  "severity_mapping": [],
+  "output_index": "",
+  "max_signals": 100,
+  "exceptions_list": [],
+  "actions": [],
+  "type": "query",
+  "language": "lucene",
+  "index": [
+    "logs-endpoint.events.file-*",
+    "logs-windows.sysmon_operational-*"
+  ],
+  "query": "file.path.caseless:*\\\\_MEI* AND file.path.caseless:*pyarmor_runtime*"
+}

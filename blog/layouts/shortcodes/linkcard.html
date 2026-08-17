@@ -1,0 +1,35 @@
+{{- /*
+  A single resource card for the student links page.
+
+    {{< linkcard title="CTI Agent" url="https://..." tag="Login required"
+                 desc="What it is and what to do there." accent="emerald" >}}
+
+  Params:
+    title  (required) card heading
+    url    the destination; omit it to render a "coming soon" placeholder
+    desc   one line of explanation
+    tag    small chip, e.g. "Login required"
+    accent cyan | magenta | emerald | amber | violet   (default cyan)
+
+  External links get rel="noopener nofollow" so the blog, which is indexed,
+  doesn't hand crawlers our own tooling.
+*/ -}}
+{{- $title := .Get "title" -}}
+{{- $url := .Get "url" -}}
+{{- $desc := .Get "desc" -}}
+{{- $tag := .Get "tag" -}}
+{{- $accent := .Get "accent" | default "cyan" -}}
+{{- if $url -}}
+<a class="link-card accent-{{ $accent }}" href="{{ $url }}" rel="noopener nofollow">
+    <span class="link-card-title">{{ $title }}</span>
+    {{- with $tag }}<span class="link-card-tag">{{ . }}</span>{{ end }}
+    {{- with $desc }}<span class="link-card-desc">{{ . }}</span>{{ end }}
+    <span class="link-card-host">{{ (urls.Parse $url).Host }}</span>
+</a>
+{{- else -}}
+<span class="link-card accent-{{ $accent }} is-pending" aria-disabled="true">
+    <span class="link-card-title">{{ $title }}</span>
+    <span class="link-card-tag">Coming soon</span>
+    {{- with $desc }}<span class="link-card-desc">{{ . }}</span>{{ end }}
+</span>
+{{- end -}}

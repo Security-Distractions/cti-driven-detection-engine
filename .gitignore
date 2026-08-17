@@ -1,0 +1,8 @@
+# Hugo build output
+blog/public/
+blog/resources/_gen/
+blog/.hugo_build.lock
+.DS_Store
+# never commit environment files
+.env
+*.env

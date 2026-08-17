@@ -1,0 +1,5 @@
+- version: "1.25.5"
+  changes:
+    - description: Parse OPNsense Squid access logs, which are emitted as ECS-JSON rather than classic Squid text.
+      type: bugfix
+      link: https://github.com/elastic/integrations/pull/PENDING

@@ -1,0 +1,175 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-08-17T10:55:58Z",
+  "canvasTitle": "PyInstaller/PyArmor loader \u2014 Defender exclusion abuse (SECDIS, 2026-08-17)",
+  "incidentLog": [
+    {
+      "id": "inc-1",
+      "timestamp": "2026-08-17T10:23:34.831Z",
+      "description": "Detection: Component Object Model Hijacking (process OneDrive.Sync.Service.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-2",
+      "timestamp": "2026-08-17T10:24:08.149Z",
+      "description": "Detection: File Compressed or Archived into Common Format by Unsigned Process (process d97ea10d1dbfe2a69e0d2387e8985635b20628495918abd54c4b052c0acf05b1.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-3",
+      "timestamp": "2026-08-17T10:24:15.875Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Windows Defender Exclusions via WMI (process WMIC.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-4",
+      "timestamp": "2026-08-17T10:24:27.177Z",
+      "description": "Detection: Machine Learning Detected a Suspicious Windows Event with a High Malicious Probability Score (process OneDriveSetup.exe)",
+      "category": "Observation"
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "attacker-infra",
+        "type": "customNode",
+        "position": {
+          "x": 520,
+          "y": 160
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "Delivery source (unobserved)",
+          "type": "server",
+          "hostname": "",
+          "ipAddress": "",
+          "os": "",
+          "criticality": "High",
+          "services": [],
+          "actions": [],
+          "description": "Sample arrived in C:\\Users\\analyst\\Downloads before the observation window. No C2 or download attempt was made by the payload during execution.",
+          "isCompromised": false,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": false,
+            "showIpAddress": false,
+            "showOs": false,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "host-secdis",
+        "type": "customNode",
+        "position": {
+          "x": 520,
+          "y": 620
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "secdis",
+          "type": "workstation",
+          "hostname": "",
+          "ipAddress": "",
+          "os": "Windows",
+          "criticality": "Critical",
+          "services": [],
+          "actions": [
+            {
+              "id": "step-1",
+              "type": "Other",
+              "technique": "Malicious File via d97ea10d1dbfe2a69e0d\u2026",
+              "details": "\"C:\\Users\\analyst\\Downloads\\d97ea10d1dbfe2a69e0d2387e8985635b20628495918abd54c4b052c0acf05b1.exe\" ",
+              "timestamp": "2026-08-17T10:22:48.6941914Z",
+              "mitreAttackId": "T1204.002",
+              "mitreAttackName": "Malicious File"
+            },
+            {
+              "id": "step-2",
+              "type": "Defense Evasion",
+              "technique": "Software Packing \u2014 PyInstaller extraction with PyArmor runtime",
+              "details": "C:\\Users\\analyst\\AppData\\Local\\Temp\\_MEI161842\\pyarmor_runtime_000000\\pyarmor_runtime.pyd\nC:\\Users\\analyst\\AppData\\Local\\Temp\\_MEI57082\\pyarmor_runtime_000000\\pyarmor_runtime.pyd\nC:\\Users\\analyst\\AppData\\Local\\Temp\\_MEI29322\\pyarmor_runtime_000000\\pyarmor_runtime.pyd\n(3 extractions; base_library.zip written alongside)",
+              "timestamp": "2026-08-17T10:22:50Z",
+              "mitreAttackId": "T1027.002",
+              "mitreAttackName": "Software Packing"
+            },
+            {
+              "id": "step-3",
+              "type": "Other",
+              "technique": "Command and Scripting Interpreter via WMIC.exe, cmd.exe",
+              "details": "\"C:\\Windows\\system32\\cmd.exe\" /c \"C:\\Users\\analyst\\Downloads\\d97ea10d1dbfe2a69e0d2387e8985635b20628495918abd54c4b052c0acf05b1.exe\"\nC:\\Windows\\system32\\cmd.exe /c \"wmic /namespace:\\\\root\\Microsoft\\Windows\\Defender path MSFT_MpPreference call Add ExclusionProcess=\"C:\\Windows\\System32\\cmd.exe\"\"\nwmic  /namespace:\\\\root\\Microsoft\\Windows\\Defender path MSFT_MpPreference call Add ExclusionProcess=\"C:\\Windows\\System32\\cmd.exe\"\n(+2 more event(s), until 10:23:10 UTC)",
+              "timestamp": "2026-08-17T10:22:59.0422169Z",
+              "mitreAttackId": "T1059",
+              "mitreAttackName": "Command and Scripting Interpreter"
+            },
+            {
+              "id": "step-4",
+              "type": "Defense Evasion",
+              "technique": "Disable or Modify Tools via WMIC.exe, cmd.exe",
+              "details": "C:\\Windows\\system32\\cmd.exe /c \"wmic /namespace:\\\\root\\Microsoft\\Windows\\Defender path MSFT_MpPreference call Add ExclusionPath=\"C:\\Users\\analyst\\Downloads\"\"\nwmic  /namespace:\\\\root\\Microsoft\\Windows\\Defender path MSFT_MpPreference call Add ExclusionPath=\"C:\\Users\\analyst\\Downloads\"\nC:\\Windows\\system32\\cmd.exe /c \"wmic /namespace:\\\\root\\Microsoft\\Windows\\Defender path MSFT_MpPreference call Add ExclusionPath=\"C:\\Users\\Public\\IIPaint\\ceduwoc\"\"\n(+3 more event(s), until 10:23:10 UTC)",
+              "timestamp": "2026-08-17T10:23:08.2151147Z",
+              "mitreAttackId": "T1562.001",
+              "mitreAttackName": "Disable or Modify Tools"
+            }
+          ],
+          "description": "4 on-host steps \u2014 double-click to drill into the path",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": false,
+            "showIpAddress": false,
+            "showOs": true,
+            "showServices": false,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false,
+            "showActionPath": true
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-attacker-host",
+        "source": "attacker-infra",
+        "target": "host-secdis",
+        "type": "customEdge",
+        "data": {
+          "label": "initial access",
+          "actionType": "Initial Access",
+          "toolUsed": "",
+          "userUsed": "",
+          "timestamp": "2026-08-17T10:22:44.8062381Z",
+          "description": "",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 1
+    }
+  }
+}

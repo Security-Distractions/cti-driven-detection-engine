@@ -1,0 +1,96 @@
+{
+  "name": "[Sigma] Suspicious Microsoft Defender Exclusion Added Via WMIC",
+  "immutable": false,
+  "rule_source": {
+    "type": "internal"
+  },
+  "interval": "5m",
+  "from": "now-9m",
+  "to": "now",
+  "description": "Detects WMIC being used to add or modify a Microsoft Defender exclusion by calling the\nMSFT_MpPreference class in the root\\Microsoft\\Windows\\Defender namespace. Administrators\nand vendor installers overwhelmingly use the Add-MpPreference PowerShell cmdlet for this,\nso the WMIC path is a strong signal of an automated payload carving out a safe staging\ndirectory before writing to it.\n\nConverted from the Sigma rule 'proc_creation_win_wmic_defender_exclusion_added.yml' (Sigma id 27cf3735-02a9-4c63-91fc-2a03e651f8cf, author CTI Team, 2026-08-17).",
+  "tags": [
+    "Sigma",
+    "Source: Sigma rule",
+    "Sigma ID: 27cf3735-02a9-4c63-91fc-2a03e651f8cf",
+    "Sigma file: proc_creation_win_wmic_defender_exclusion_added.yml",
+    "attack.stealth",
+    "attack.t1564.012",
+    "attack.defense-impairment",
+    "attack.t1685",
+    "attack.execution",
+    "attack.t1047"
+  ],
+  "author": [
+    "CTI Team (Sigma)",
+    "Converted with pySigma 1.5.0 / ecs_windows"
+  ],
+  "license": "DRL",
+  "threat": [
+    {
+      "framework": "MITRE ATT&CK",
+      "tactic": {
+        "id": "TA0005",
+        "name": "Defense Evasion",
+        "reference": "https://attack.mitre.org/tactics/TA0005/"
+      },
+      "technique": [
+        {
+          "id": "T1564",
+          "name": "Hide Artifacts",
+          "reference": "https://attack.mitre.org/techniques/T1564/",
+          "subtechnique": [
+            {
+              "id": "T1564.012",
+              "name": "File/Path Exclusions",
+              "reference": "https://attack.mitre.org/techniques/T1564/012/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "framework": "MITRE ATT&CK",
+      "tactic": {
+        "id": "TA0002",
+        "name": "Execution",
+        "reference": "https://attack.mitre.org/tactics/TA0002/"
+      },
+      "technique": [
+        {
+          "id": "T1047",
+          "name": "Windows Management Instrumentation",
+          "reference": "https://attack.mitre.org/techniques/T1047/"
+        }
+      ]
+    }
+  ],
+  "related_integrations": [],
+  "required_fields": [],
+  "setup": "",
+  "note": "Converted from Sigma. Original detection logic:\n\n```\nproc_creation_win_wmic_defender_exclusion_added.yml\nsigma id: 27cf3735-02a9-4c63-91fc-2a03e651f8cf\n```\n\nRequires Windows process_creation telemetry (Elastic Defend, Agent-shipped Sysmon, or Security 4688 with command-line auditing).",
+  "false_positives": [
+    "Endpoint deployment or hardening scripts that apply vendor-recommended antivirus exclusions for database, backup, or virtualisation software. These normally run from a known deployment agent parent process and reference a Program Files path rather than a user-writable one.",
+    "Legacy in-house automation that predates the Defender PowerShell module and still shells out to WMIC.",
+    "Security product installers that register their own binaries as exclusions during setup."
+  ],
+  "references": [
+    "https://bazaar.abuse.ch/sample/d97ea10d1dbfe2a69e0d2387e8985635b20628495918abd54c4b052c0acf05b1/",
+    "https://tria.ge/260817-ktkv8swgra"
+  ],
+  "risk_score": 73,
+  "risk_score_mapping": [],
+  "severity": "high",
+  "severity_mapping": [],
+  "output_index": "",
+  "max_signals": 100,
+  "exceptions_list": [],
+  "actions": [],
+  "type": "query",
+  "language": "lucene",
+  "index": [
+    "logs-endpoint.events.process-*",
+    "logs-windows.sysmon_operational-*",
+    "logs-system.security*"
+  ],
+  "query": "(process.executable.caseless:*\\\\wmic.exe OR process.pe.original_file_name:wmic.exe) AND process.command_line.caseless:*MSFT_MpPreference* AND (process.command_line.caseless:(*ExclusionPath* OR *ExclusionProcess* OR *ExclusionExtension* OR *ExclusionIpAddress*))"
+}

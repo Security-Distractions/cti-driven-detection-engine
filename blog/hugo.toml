@@ -1,0 +1,93 @@
+baseURL = "https://securitydistractions.com/"
+languageCode = "en-gb"
+title = "securitydistractions"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+pygmentsUseClasses = true
+
+[pagination]
+  pagerSize = 10
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+[params]
+  env = "production"
+  description = "Notes on malware analysis, detection engineering and threat intelligence."
+  author = "David Clayton"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  ShowToc = true
+  TocOpen = false
+  hidemeta = false
+  comments = false
+
+  [params.cta]
+    text = "Launch the CTI Agent"
+    url = "https://cti-agent.securitydistractions.com/"
+    icon = "▶"
+    note = "Threat-intel workbench used in the course — sign in with the account you were given."
+
+  [params.homeInfoParams]
+    Title = "securitydistractions"
+    Content = "Malware analysis, detection engineering, and threat intelligence — written up from a home lab."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/dclayton454"
+
+  [params.assets]
+    disableHLJS = true
+    favicon = "/favicon.ico"
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    style = "monokai"
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "students"
+    name = "Students"
+    url = "/students/"
+    weight = 12
+
+  [[menu.main]]
+    identifier = "cti"
+    name = "CTI Agent"
+    url = "https://cti-agent.securitydistractions.com/"
+    weight = 15
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 20
+  [[menu.main]]
+    identifier = "search"
+    name = "Search"
+    url = "/search/"
+    weight = 30

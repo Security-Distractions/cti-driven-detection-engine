@@ -1,0 +1,672 @@
+/* ------------------------------------------------------------------
+   dksec — cyberpunk HUD
+   Styled after the lab topology board: near-black field, octagon panels
+   with neon outlines and outer glow, mono caps with wide tracking,
+   colour-coded accents (cyan / magenta / emerald / amber).
+   Chrome is loud; body copy stays readable for long-form write-ups.
+   ------------------------------------------------------------------ */
+
+:root {
+  --neon-cyan: #22d3ee;
+  --neon-cyan-hi: #67e8f9;
+  --neon-magenta: #ff2d95;
+  --neon-magenta-hi: #ff7ac6;
+  --neon-emerald: #39ff9e;
+  --neon-emerald-hi: #7dffc3;
+  --neon-amber: #ffb020;
+  --neon-violet: #b98bff;
+
+  --black: #02030a;
+  --panel: #05070f;
+  --panel-hi: #080c18;
+  --line: #16233f;
+
+  --gap: 24px;
+  --content-gap: 20px;
+  --nav-width: 1040px;
+  --main-width: 780px;
+  --cut: 16px;   /* corner cut for panels */
+  --cut-sm: 8px; /* corner cut for small chips */
+}
+
+/* octagon: all four corners cut, like the topology boxes */
+@supports (clip-path: polygon(0 0)) {
+  .hud-oct {
+    clip-path: polygon(
+      var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut),
+      100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%,
+      var(--cut) 100%, 0 calc(100% - var(--cut)), 0 var(--cut)
+    );
+  }
+}
+
+.dark,
+:root {
+  --theme: var(--black);
+  --entry: var(--panel);
+  --primary: #eaf4ff;
+  --secondary: #8ba0c4;
+  --tertiary: var(--panel-hi);
+  --content: #d2dff5;
+  --code-block-bg: var(--panel);
+  --code-bg: var(--panel-hi);
+  --border: var(--line);
+}
+
+html { color-scheme: dark; }
+
+body {
+  background-color: var(--black);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background-image:
+    /* circuit grid, fine + coarse */
+    linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(255, 45, 149, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 45, 149, 0.028) 1px, transparent 1px),
+    radial-gradient(circle at 8% -10%, rgba(34, 211, 238, 0.16), transparent 52%),
+    radial-gradient(circle at 94% 3%, rgba(255, 45, 149, 0.13), transparent 48%),
+    radial-gradient(circle at 50% 112%, rgba(57, 255, 158, 0.09), transparent 52%);
+  background-size:
+    140px 140px, 140px 140px,
+    28px 28px, 28px 28px,
+    100% 100%, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
+
+/* CRT scanlines + sweeping scan bar */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9998;
+  background: repeating-linear-gradient(
+    180deg, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.24) 3px, rgba(0,0,0,0.24) 4px);
+  opacity: 0.32;
+}
+
+body::after {
+  content: "";
+  position: fixed; left: 0; right: 0;
+  height: 200px; top: -200px;
+  pointer-events: none; z-index: 9999;
+  background: linear-gradient(180deg, transparent, rgba(34, 211, 238, 0.06), transparent);
+  animation: sweep 8s linear infinite;
+}
+
+@keyframes sweep { 0% { top: -200px; } 100% { top: 100%; } }
+
+/* ---------- header ---------- */
+
+.nav {
+  border-bottom: 1px solid rgba(34, 211, 238, 0.3);
+  backdrop-filter: blur(8px);
+  background: rgba(2, 3, 10, 0.82);
+  box-shadow: 0 1px 26px rgba(34, 211, 238, 0.18);
+}
+
+.logo a {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: clamp(13px, 1.7vw, 18px);
+  color: var(--neon-cyan-hi);
+  text-shadow: 0 0 10px rgba(34,211,238,.9), 0 0 30px rgba(34,211,238,.5);
+}
+
+.logo a::before { content: "> "; color: var(--neon-emerald); }
+.logo a::after {
+  content: "_"; color: var(--neon-magenta); margin-left: 2px;
+  animation: blink 1.15s steps(2, start) infinite;
+}
+@keyframes blink { to { visibility: hidden; } }
+
+#menu a {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--secondary);
+  transition: color .18s ease, text-shadow .18s ease;
+}
+#menu a:hover { color: var(--neon-magenta-hi); text-shadow: 0 0 12px rgba(255,45,149,.75); }
+#menu .active {
+  color: var(--neon-cyan-hi);
+  border-bottom: 1px solid var(--neon-cyan);
+  box-shadow: 0 2px 14px -6px var(--neon-cyan);
+}
+
+/* ---------- home hero ---------- */
+
+.first-entry { position: relative; min-height: 300px; }
+
+.first-entry .entry-header h1 {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  /* fluid so a long site name can't overflow its container */
+  font-size: clamp(20px, 5.2vw, 44px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+  line-height: 1.1;
+  color: var(--neon-cyan-hi);
+  text-shadow:
+    2px 0 0 rgba(255,45,149,.6), -2px 0 0 rgba(57,255,158,.6),
+    0 0 34px rgba(34,211,238,.5);
+  animation: chroma 5.5s infinite steps(1);
+}
+
+@keyframes chroma {
+  0%,92%,100% { text-shadow: 2px 0 0 rgba(255,45,149,.6), -2px 0 0 rgba(57,255,158,.6), 0 0 34px rgba(34,211,238,.5); }
+  93% { text-shadow: -6px 0 0 rgba(255,45,149,.9), 6px 0 0 rgba(57,255,158,.9), 0 0 38px rgba(34,211,238,.65); }
+  95% { text-shadow: 6px 0 0 rgba(255,45,149,.9), -6px 0 0 rgba(57,255,158,.9), 0 0 38px rgba(34,211,238,.65); }
+  97% { text-shadow: -3px 0 0 rgba(255,45,149,.75), 3px 0 0 rgba(57,255,158,.75), 0 0 34px rgba(34,211,238,.55); }
+}
+
+.first-entry .entry-content {
+  color: var(--secondary);
+  font-size: 15.5px;
+  line-height: 1.7;
+  border-left: 2px solid var(--neon-magenta);
+  padding-left: 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+.first-entry .entry-content::before {
+  content: "// ";
+  color: var(--neon-magenta);
+}
+
+/* ---------- brand logo in the hero ---------- */
+
+.site-logo-heading {
+  margin: 0 0 4px;
+  line-height: 0;            /* kill descender gap under the image */
+  animation: none;           /* the artwork has its own glitch baked in */
+  text-shadow: none;
+}
+
+.site-logo {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  /* Screen blending drops the artwork's black into the page. Its background
+     isn't *pure* black though, so the image's bounding box shows as a faint
+     rectangle — the mask feathers all four edges so it dissolves instead. */
+  mix-blend-mode: screen;
+  -webkit-mask-image:
+    linear-gradient(to right,  transparent 0, #000 5%, #000 93%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 7%, #000 91%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right,  transparent 0, #000 5%, #000 93%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 7%, #000 91%, transparent 100%);
+  mask-composite: intersect;
+  filter: drop-shadow(0 0 34px rgba(255, 45, 149, 0.28));
+}
+
+@media (max-width: 700px) {
+  .site-logo { max-width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-logo { filter: none; }
+}
+
+/* ---------- post cards: neon-outlined octagon panels ---------- */
+
+.post-entry {
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  padding: 22px 24px;
+  /* the neon outline IS the background; ::before masks the interior */
+  background: linear-gradient(150deg, var(--neon-cyan), rgba(34,211,238,.45) 45%, rgba(255,45,149,.55));
+  clip-path: polygon(
+    var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut),
+    100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%,
+    var(--cut) 100%, 0 calc(100% - var(--cut)), 0 var(--cut));
+  box-shadow: 0 0 26px -6px rgba(34,211,238,.45);
+  transition: box-shadow .22s ease, transform .22s ease, background .22s ease;
+}
+
+/* interior fill */
+.post-entry::before {
+  content: "";
+  position: absolute; inset: 1.5px;
+  background: linear-gradient(170deg, var(--panel-hi), var(--panel) 70%);
+  clip-path: polygon(
+    var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut),
+    100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%,
+    var(--cut) 100%, 0 calc(100% - var(--cut)), 0 var(--cut));
+  z-index: 0;
+}
+
+/* faint inner rule, like the double-lined boxes on the topology board */
+.post-entry::after {
+  content: "";
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(34, 211, 238, 0.16);
+  clip-path: polygon(
+    10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+    calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  pointer-events: none;
+  z-index: 0;
+  transition: border-color .22s ease;
+}
+
+/* Lift content above the ::before/::after panel layers — but never touch
+   .entry-link: PaperMod absolutely-positions it as the card's click target,
+   and forcing position:relative collapses it and kills the link. */
+.post-entry > :not(.entry-link) { position: relative; z-index: 1; }
+
+.post-entry > .entry-link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 0;
+}
+
+.post-entry:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(150deg, var(--neon-cyan-hi), var(--neon-magenta) 60%, var(--neon-emerald));
+  box-shadow: 0 0 46px -8px rgba(255,45,149,.55), 0 16px 44px rgba(0,0,0,.7);
+}
+.post-entry:hover::after { border-color: rgba(255, 45, 149, 0.35); }
+
+.entry-header h2 {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--primary);
+  transition: color .18s ease, text-shadow .18s ease;
+}
+.post-entry:hover .entry-header h2 {
+  color: var(--neon-cyan-hi);
+  text-shadow: 0 0 20px rgba(34,211,238,.65);
+}
+
+.entry-content { color: var(--secondary); font-size: 14.5px; line-height: 1.62; }
+
+.entry-footer, .post-meta {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: #6b81ad;
+}
+
+/* ---------- single post ---------- */
+
+.post-title {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--neon-cyan-hi);
+  text-shadow: 0 0 26px rgba(34,211,238,.4);
+}
+
+.post-content { font-size: 17px; line-height: 1.78; color: var(--content); }
+
+.post-content h2 {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 18px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: var(--neon-cyan-hi);
+  border-left: 3px solid var(--neon-cyan);
+  padding-left: 13px;
+  margin-top: 2.4em;
+  text-shadow: 0 0 22px rgba(34,211,238,.45);
+}
+.post-content h2::before { content: "// "; color: var(--neon-magenta); opacity: .8; }
+
+.post-content h3 {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 15px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--neon-emerald-hi);
+  text-shadow: 0 0 18px rgba(57,255,158,.4);
+}
+.post-content h3::before { content: "> "; color: var(--neon-emerald); opacity: .8; }
+
+.post-content a {
+  color: var(--neon-cyan-hi);
+  text-decoration-color: rgba(34,211,238,.5);
+  text-underline-offset: 3px;
+}
+.post-content a:hover {
+  color: var(--neon-magenta-hi);
+  text-shadow: 0 0 12px rgba(255,45,149,.65);
+  text-decoration-color: var(--neon-magenta);
+}
+
+.post-content blockquote {
+  border-inline-start: 3px solid var(--neon-magenta);
+  background: rgba(255,45,149,.07);
+  border-radius: 0;
+  color: #e2ccdd;
+  box-shadow: inset 0 0 46px rgba(255,45,149,.06);
+}
+
+.post-content hr {
+  border: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-magenta), transparent);
+  opacity: .55;
+}
+
+.post-content table { border: 1px solid rgba(34,211,238,.25); }
+.post-content table th {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-size: 12px;
+  color: var(--neon-cyan-hi);
+  background: rgba(34,211,238,.07);
+  border-bottom: 1px solid rgba(34,211,238,.3);
+}
+.post-content table td { border-bottom: 1px solid rgba(34,211,238,.10); }
+
+/* ---------- code: amber-edged HUD block ---------- */
+
+.post-content code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: .87em;
+  background: rgba(34,211,238,.13);
+  color: var(--neon-cyan-hi);
+  border: 1px solid rgba(34,211,238,.28);
+  border-radius: 2px;
+  padding: 1px 6px;
+}
+
+.post-content pre {
+  background: linear-gradient(180deg, #04060f, var(--panel)) !important;
+  border: 1px solid rgba(255, 176, 32, 0.28);
+  border-left: 3px solid var(--neon-amber);
+  border-radius: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  box-shadow: inset 0 0 70px rgba(255,176,32,.045), 0 0 30px -16px rgba(255,176,32,.65);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.post-content pre code { background: transparent !important; color: #d2dff5; padding: 0; border: 0; }
+.chroma .lnt { color: #3a4b78; }
+
+.copy-code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  background: var(--panel-hi);
+  color: var(--neon-amber);
+  border: 1px solid rgba(255,176,32,.4);
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  font-size: 10px;
+}
+.copy-code:hover { box-shadow: 0 0 16px rgba(255,176,32,.5); }
+
+/* ---------- tags: emerald chips with cut corners ---------- */
+
+.post-tags a, .terms-tags a {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: rgba(57,255,158,.09);
+  border: 1px solid rgba(57,255,158,.5);
+  color: var(--neon-emerald-hi);
+  border-radius: 0;
+  padding: 5px 14px;
+  clip-path: polygon(var(--cut-sm) 0, 100% 0, 100% calc(100% - var(--cut-sm)),
+                     calc(100% - var(--cut-sm)) 100%, 0 100%, 0 var(--cut-sm));
+  transition: all .18s ease;
+}
+.post-tags a::before, .terms-tags a::before { content: "#"; opacity: .65; }
+.post-tags a:hover, .terms-tags a:hover {
+  background: rgba(255,45,149,.15);
+  border-color: var(--neon-magenta);
+  color: var(--neon-magenta-hi);
+  box-shadow: 0 0 20px rgba(255,45,149,.45);
+}
+
+/* ---------- toc / pagination / search / footer ---------- */
+
+.toc {
+  background: var(--panel);
+  border: 1px solid rgba(185,139,255,.3);
+  border-left: 3px solid var(--neon-violet);
+  border-radius: 0;
+  box-shadow: 0 0 26px -14px rgba(185,139,255,.7);
+}
+.toc details summary {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11.5px;
+  color: var(--neon-violet);
+}
+
+.pagination a, .post-nav a {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-size: 11.5px;
+  background: var(--panel-hi);
+  border: 1px solid rgba(34,211,238,.3);
+  color: var(--neon-cyan-hi);
+  border-radius: 0;
+}
+.pagination a:hover {
+  border-color: var(--neon-magenta);
+  color: var(--neon-magenta-hi);
+  box-shadow: 0 0 22px rgba(255,45,149,.35);
+}
+
+#searchbox input {
+  background: var(--panel);
+  border: 1px solid rgba(34,211,238,.3);
+  color: var(--primary);
+  border-radius: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+#searchbox input:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 0 3px rgba(34,211,238,.14), 0 0 26px -8px var(--neon-cyan);
+  outline: none;
+}
+#searchResults li:active, #searchResults .focus { background: rgba(255,45,149,.12); }
+
+/* footer reads like the legend strip on the topology board */
+.footer {
+  border-top: 1px solid rgba(34,211,238,.22);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #5b6f96;
+}
+.footer a { color: var(--neon-emerald); }
+.footer::before {
+  content: "STATUS: ONLINE · EGRESS: OUTBOUND ONLY · THREAT LEVEL: LOW";
+  display: block;
+  color: #40527a;
+  font-size: 10px;
+  letter-spacing: 2.2px;
+  margin-bottom: 10px;
+}
+
+.top-link {
+  background: var(--panel-hi);
+  border: 1px solid rgba(34,211,238,.45);
+  color: var(--neon-cyan-hi);
+  border-radius: 0;
+}
+
+/* ---------- accessibility + motion ---------- */
+
+::selection { background: rgba(255,45,149,.38); color: #fff; }
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--neon-magenta);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after { display: none; }
+  .first-entry .entry-header h1 { animation: none; }
+  .logo a::after { animation: none; }
+  .post-entry, .post-entry::after, #menu a, .pagination a { transition: none; }
+  .post-entry:hover { transform: none; }
+}
+
+@media (max-width: 700px) {
+  :root { --cut: 10px; }
+  .post-title { font-size: 22px; letter-spacing: 1px; }
+  .post-content h2 { font-size: 16px; letter-spacing: 1.6px; }
+  body { background-size: 90px 90px, 90px 90px, 22px 22px, 22px 22px, 100% 100%, 100% 100%, 100% 100%; }
+  body::before { opacity: .24; }
+}
+
+/* ---------------------------------------------------------------- home CTA
+   Prominent entry point to the CTI Agent for students. Same cut-corner panel
+   language as .post-entry, but emerald so it reads as an action rather than
+   another post card. */
+.home-cta {
+  margin-top: var(--content-gap);
+  text-align: center;
+}
+
+.cta-button {
+  --cta: var(--neon-emerald);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--black) !important;
+  background: linear-gradient(135deg, var(--cta), var(--neon-emerald-hi));
+  border: 1px solid var(--cta);
+  clip-path: polygon(var(--cut-sm) 0, 100% 0, 100% calc(100% - var(--cut-sm)), calc(100% - var(--cut-sm)) 100%, 0 100%, 0 var(--cut-sm));
+  box-shadow: 0 0 0 1px rgba(57, 255, 158, 0.25), 0 0 24px -6px var(--cta);
+  transition: box-shadow 0.18s ease, transform 0.18s ease, filter 0.18s ease;
+}
+
+.cta-button:hover,
+.cta-button:focus-visible {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px rgba(57, 255, 158, 0.45), 0 0 34px -4px var(--cta);
+}
+
+.cta-button:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 3px; }
+
+.cta-icon { font-size: 0.85em; line-height: 1; }
+
+.cta-note {
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+  color: var(--secondary);
+}
+
+/* The nav link to an external app: tint it so it's visibly not a blog section. */
+#menu li a[href*="cti-agent"] { color: var(--neon-emerald); }
+#menu li a[href*="cti-agent"]:hover { color: var(--neon-emerald-hi); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-button { transition: none; }
+  .cta-button:hover, .cta-button:focus-visible { transform: none; }
+}
+
+/* ------------------------------------------------------- student link cards
+   Grid of resource cards. Accent colour is per-card so a group of links is
+   distinguishable at a glance; the cut corner matches .post-entry. */
+.link-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 18px 0 28px;
+}
+
+.link-card {
+  --accent: var(--neon-cyan);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  background: var(--panel-hi);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut-sm)), calc(100% - var(--cut-sm)) 100%, 0 100%);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+a.link-card:hover,
+a.link-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 0 22px -8px var(--accent);
+}
+
+a.link-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.link-card-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--primary);
+  letter-spacing: 0.01em;
+}
+
+.link-card-tag {
+  align-self: flex-start;
+  padding: 1px 7px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%);
+  opacity: 0.85;
+}
+
+.link-card-desc { font-size: 0.88rem; color: var(--secondary); line-height: 1.45; }
+
+.link-card-host {
+  margin-top: 2px;
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 0.72rem;
+  color: var(--accent);
+  opacity: 0.75;
+}
+
+/* Placeholder for links that don't exist yet. */
+.link-card.is-pending { opacity: 0.55; border-left-style: dashed; cursor: default; }
+.link-card.is-pending .link-card-title { color: var(--secondary); }
+
+.link-card.accent-cyan    { --accent: var(--neon-cyan); }
+.link-card.accent-magenta { --accent: var(--neon-magenta); }
+.link-card.accent-emerald { --accent: var(--neon-emerald); }
+.link-card.accent-amber   { --accent: var(--neon-amber); }
+.link-card.accent-violet  { --accent: var(--neon-violet); }
+
+@media (prefers-reduced-motion: reduce) {
+  .link-card { transition: none; }
+  a.link-card:hover, a.link-card:focus-visible { transform: none; }
+}
+
+/* PaperMod underlines links inside post content. A whole card is one link, so
+   that underlines every line in it — strip it and let the border/glow carry
+   the affordance. */
+.post-content a.link-card,
+.post-content a.link-card:hover,
+.post-content a.link-card * { text-decoration: none !important; box-shadow: none; }

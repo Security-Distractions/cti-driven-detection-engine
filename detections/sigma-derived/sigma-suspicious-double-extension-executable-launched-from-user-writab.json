@@ -1,0 +1,100 @@
+{
+  "name": "[Sigma] Suspicious Double Extension Executable Launched From User Writable Path",
+  "immutable": false,
+  "rule_source": {
+    "type": "internal"
+  },
+  "interval": "5m",
+  "from": "now-9m",
+  "to": "now",
+  "description": "Detects execution of a binary whose filename ends in a document, archive, or source code\nextension followed by .exe, from a user-writable location such as Temp, Downloads, or\nC:\\Users\\Public. The observed cluster ships as composer.php.exe and composer.dat.exe,\nimitating a Composer artefact so a developer double-clicking it believes they are opening\na PHP or data file.\n\nConverted from the Sigma rule 'proc_creation_win_double_extension_exec_user_writable.yml' (Sigma id fc5cd64c-4e5f-46f3-b402-557f3128c842, author CTI Team, 2026-08-17).",
+  "tags": [
+    "Sigma",
+    "Source: Sigma rule",
+    "Sigma ID: fc5cd64c-4e5f-46f3-b402-557f3128c842",
+    "Sigma file: proc_creation_win_double_extension_exec_user_writable.yml",
+    "attack.stealth",
+    "attack.t1036.007",
+    "attack.execution",
+    "attack.t1204.002"
+  ],
+  "author": [
+    "CTI Team (Sigma)",
+    "Converted with pySigma 1.5.0 / ecs_windows"
+  ],
+  "license": "DRL",
+  "threat": [
+    {
+      "framework": "MITRE ATT&CK",
+      "tactic": {
+        "id": "TA0005",
+        "name": "Defense Evasion",
+        "reference": "https://attack.mitre.org/tactics/TA0005/"
+      },
+      "technique": [
+        {
+          "id": "T1036",
+          "name": "Masquerading",
+          "reference": "https://attack.mitre.org/techniques/T1036/",
+          "subtechnique": [
+            {
+              "id": "T1036.007",
+              "name": "Double File Extension",
+              "reference": "https://attack.mitre.org/techniques/T1036/007/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "framework": "MITRE ATT&CK",
+      "tactic": {
+        "id": "TA0002",
+        "name": "Execution",
+        "reference": "https://attack.mitre.org/tactics/TA0002/"
+      },
+      "technique": [
+        {
+          "id": "T1204",
+          "name": "User Execution",
+          "reference": "https://attack.mitre.org/techniques/T1204/",
+          "subtechnique": [
+            {
+              "id": "T1204.002",
+              "name": "Malicious File",
+              "reference": "https://attack.mitre.org/techniques/T1204/002/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "related_integrations": [],
+  "required_fields": [],
+  "setup": "",
+  "note": "Converted from Sigma. Original detection logic:\n\n```\nproc_creation_win_double_extension_exec_user_writable.yml\nsigma id: fc5cd64c-4e5f-46f3-b402-557f3128c842\n```\n\nRequires Windows process_creation telemetry (Elastic Defend, Agent-shipped Sysmon, or Security 4688 with command-line auditing).",
+  "false_positives": [
+    "Self-extracting archives and installers that legitimately embed a data extension in the filename, for example a vendor package named with an internal build identifier.",
+    "Developer build output where a toolchain names artefacts after their source file, which is plausible on a build agent or engineering workstation."
+  ],
+  "references": [
+    "https://bazaar.abuse.ch/sample/d97ea10d1dbfe2a69e0d2387e8985635b20628495918abd54c4b052c0acf05b1/",
+    "https://tria.ge/260817-ktkv8swgra"
+  ],
+  "risk_score": 73,
+  "risk_score_mapping": [],
+  "severity": "high",
+  "severity_mapping": [],
+  "output_index": "",
+  "max_signals": 100,
+  "exceptions_list": [],
+  "actions": [],
+  "type": "query",
+  "language": "lucene",
+  "index": [
+    "logs-endpoint.events.process-*",
+    "logs-windows.sysmon_operational-*",
+    "logs-system.security*"
+  ],
+  "query": "(process.executable.caseless:(*\\\\AppData\\\\Local\\\\Temp\\\\* OR *\\\\AppData\\\\Roaming\\\\* OR *\\\\Users\\\\Public\\\\* OR *\\\\Downloads\\\\* OR *\\\\Windows\\\\Temp\\\\*)) AND (process.executable.caseless:(*.php.exe OR *.dat.exe OR *.pdf.exe OR *.doc.exe OR *.docx.exe OR *.xls.exe OR *.xlsx.exe OR *.ppt.exe OR *.pptx.exe OR *.rtf.exe OR *.txt.exe OR *.csv.exe OR *.json.exe OR *.xml.exe OR *.log.exe OR *.jpg.exe OR *.jpeg.exe OR *.png.exe OR *.gif.exe OR *.svg.exe OR *.zip.exe OR *.rar.exe OR *.7z.exe OR *.iso.exe OR *.js.exe OR *.py.exe OR *.ps1.exe OR *.lock.exe OR *.cfg.exe OR *.ini.exe))"
+}
