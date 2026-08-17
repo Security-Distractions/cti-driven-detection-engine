@@ -1,6 +1,10 @@
 # Malware detonations
 
-One directory per detonation in the lab: the written-up analysis, the detections that fired, the
+The validation half of this repo: one directory per detonation in the lab, showing which detections
+actually fired against real malware. A rule that never fires against a live sample is a rule you
+cannot trust.
+
+One directory per detonation: the written-up analysis, the detections that fired, the
 indicators, and a [CompromiseCanvas](https://github.com/SagaLabs/CompromiseCanvas) export of the
 attack path where one exists.
 
@@ -35,8 +39,9 @@ walk the steps. Older builds still import them, but render the steps as a flat l
 
 ## Related
 
-- [cti-driven-detection-engine](https://github.com/Security-Distractions/cti-driven-detection-engine) — the detections these validate, the lab, and the tooling
-- [`tooling/elastic_to_canvas.py`](https://github.com/Security-Distractions/cti-driven-detection-engine/blob/main/tooling/elastic_to_canvas.py) — generates these canvases from Elastic telemetry
+- [`../detections/`](../detections/) — the detections these validate
+- [`../lab/`](../lab/) — how the validation lab is built
+- [`../tooling/elastic_to_canvas.py`](../tooling/elastic_to_canvas.py) — generates these canvases from Elastic telemetry
 
 ## A note on scope
 

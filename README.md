@@ -4,8 +4,8 @@ Turning threat intelligence into working Elastic detections, and the lab that pr
 Kept in my own time, outside of work.
 
 The loop this repo documents: take a rule or a piece of reporting, convert it into a detection,
-detonate something real against it, and keep only what actually fired. The detonations themselves
-live in [detonations](https://github.com/Security-Distractions/detonations).
+detonate something real against it, and keep only what actually fired. Each round is written up
+under [`detonations/`](detonations/).
 The companion blog is [www.securitydistractions.com](https://www.securitydistractions.com), whose
 source lives in [Security-Distractions/blog](https://github.com/Security-Distractions/blog).
 
@@ -14,7 +14,7 @@ source lives in [Security-Distractions/blog](https://github.com/Security-Distrac
 | Path | |
 |---|---|
 | [`lab/`](lab/) | The validation lab this engine runs against: network segments, Windows analysis VM, Elastic logging pipeline, open questions, and a running list of corrections |
-| [detonations](https://github.com/Security-Distractions/detonations) | **Separate repo** — per-detonation analysis, results and attack-path canvases |
+| [`detonations/`](detonations/) | Per-detonation analysis, the detections that fired, indicators and attack-path canvases |
 | [`detections/`](detections/) | Detection content — Sigma rules converted to Elastic, and notes on which rules were disabled and why |
 | [`tooling/`](tooling/) | Scripts — chiefly `elastic_to_canvas.py`, which turns Elastic telemetry into an attack-path canvas |
 | [`contributions/`](contributions/) | Work sent upstream: the pfSense/Squid integration fix and the CompromiseCanvas on-host attack path feature |
@@ -38,7 +38,7 @@ Written up on the [blog](https://www.securitydistractions.com/posts/proxy-blind-
 
 **PyArmor-obfuscated loader** — full detonation analysis: a double-extension executable unpacking a
 PyArmor-protected PyInstaller payload, then adding Defender exclusions via WMIC. That write-up and
-five others live in [detonations](https://github.com/Security-Distractions/detonations).
+five others are under [`detonations/`](detonations/).
 
 ## Reproducing the tooling
 
