@@ -95,7 +95,7 @@ No network indicators - none were observed.
 ## Attack path diagram
 
 Compromise Canvas export of the on-host attack path:
-**https://github.com/Security-Distractions/lab/blob/main/canvases/pyarmor-loader-20260817.json**
+**[`canvas/on-host-attack-path.json`](canvas/on-host-attack-path.json)** (in this directory)
 
 Download it, then in [CompromiseCanvas](https://github.com/SagaLabs/CompromiseCanvas) choose **Import
 JSON** and **double-click the `secdis` host** to walk the four steps. The full write-up is published alongside it in `cases/`.

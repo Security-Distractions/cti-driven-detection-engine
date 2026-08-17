@@ -35,8 +35,8 @@ walk the steps. Older builds still import them, but render the steps as a flat l
 
 ## Related
 
-- [`lab`](https://github.com/Security-Distractions/lab) — how the lab is built, detection content, tooling
-- [`lab/tooling/elastic_to_canvas.py`](https://github.com/Security-Distractions/lab/blob/main/tooling/elastic_to_canvas.py) — generates these canvases from Elastic telemetry
+- [cti-driven-detection-engine](https://github.com/Security-Distractions/cti-driven-detection-engine) — the detections these validate, the lab, and the tooling
+- [`tooling/elastic_to_canvas.py`](https://github.com/Security-Distractions/cti-driven-detection-engine/blob/main/tooling/elastic_to_canvas.py) — generates these canvases from Elastic telemetry
 
 ## A note on scope
 
