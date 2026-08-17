@@ -1,6 +1,11 @@
-# securitydistractions — lab & research
+# CTI-driven detection engine
 
-Detection engineering, malware detonation and lab-build notes from my own time, outside of work.
+Turning threat intelligence into working Elastic detections, and the lab that proves they fire.
+Kept in my own time, outside of work.
+
+The loop this repo documents: take a rule or a piece of reporting, convert it into a detection,
+detonate something real against it, and keep only what actually fired. The detonations themselves
+live in [detonations](https://github.com/Security-Distractions/detonations).
 The companion blog is [www.securitydistractions.com](https://www.securitydistractions.com), whose
 source lives in [Security-Distractions/blog](https://github.com/Security-Distractions/blog).
 
@@ -8,7 +13,7 @@ source lives in [Security-Distractions/blog](https://github.com/Security-Distrac
 
 | Path | |
 |---|---|
-| [`lab/`](lab/) | How the detonation lab is built: network segments, Windows analysis VM, Elastic logging pipeline, open questions, and a running list of corrections |
+| [`lab/`](lab/) | The validation lab this engine runs against: network segments, Windows analysis VM, Elastic logging pipeline, open questions, and a running list of corrections |
 | [detonations](https://github.com/Security-Distractions/detonations) | **Separate repo** — per-detonation analysis, results and attack-path canvases |
 | [`detections/`](detections/) | Detection content — Sigma rules converted to Elastic, and notes on which rules were disabled and why |
 | [`tooling/`](tooling/) | Scripts — chiefly `elastic_to_canvas.py`, which turns Elastic telemetry into an attack-path canvas |
