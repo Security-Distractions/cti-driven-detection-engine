@@ -15,7 +15,7 @@ source lives in [Security-Distractions/blog](https://github.com/Security-Distrac
 |---|---|
 | [`lab/`](lab/) | The validation lab this engine runs against: network segments, Windows analysis VM, Elastic logging pipeline, open questions, and a running list of corrections |
 | [`detonations/`](detonations/) | Per-detonation analysis, the detections that fired, indicators and attack-path canvases |
-| [`detections/`](detections/) | Detection content — Sigma rules converted to Elastic, and notes on which rules were disabled and why |
+| [`detections/`](detections/) | The detection rules in **Sigma** format, plus their Elastic conversions and notes on which prebuilt rules were disabled |
 | [`tooling/`](tooling/) | Scripts — chiefly `elastic_to_canvas.py`, which turns Elastic telemetry into an attack-path canvas |
 | [`contributions/`](contributions/) | Work sent upstream: the pfSense/Squid integration fix and the CompromiseCanvas on-host attack path feature |
 
@@ -27,9 +27,11 @@ attack path step by step, with tactic, technique, MITRE ID and the command lines
 Merged upstream as [SagaLabs/CompromiseCanvas#21](https://github.com/SagaLabs/CompromiseCanvas/pull/21).
 See [`contributions/compromise-canvas-on-host-path/`](contributions/compromise-canvas-on-host-path/).
 
-**Sigma → Elastic conversions** — three rules converted with pySigma and the `ecs_windows` pipeline,
-then validated by live detonation rather than assumed correct. All three fired.
-See [`detections/sigma-derived/`](detections/sigma-derived/).
+**Sigma rules, validated by detonation** — three rules written in Sigma, converted to Elastic with
+pySigma and the `ecs_windows` pipeline, then tested against live malware rather than assumed correct.
+Two fired; the third was correctly silent because its precondition never occurred, so it is recorded
+as untested rather than working. Source YAML in [`detections/sigma/`](detections/sigma/), conversions
+in [`detections/elastic/`](detections/elastic/).
 
 **The proxy blind spot** — Squid access logs were reaching Elasticsearch but arriving as
 un-decoded JSON in `message`, so a proxy query for outbound traffic returned nothing while
