@@ -24,7 +24,7 @@ live Elastic cluster. Answers live in the relevant document; this is the index.
 | 17 | What does the OTel collector feed? | It **is** the OPNsense relay input | `03` §2 |
 | 10 | Defender on `secdis`? | **Disabled by Elastic Security** — Defend is the sole EDR | `02` §5 |
 | 18 | OPNsense GUI location? | **`http://192.168.2.1`** — plain HTTP, port 80 | `01` §1 |
-| 19 | `<SSH-TUNNEL-HOST>` policy? | **Now david only** — kasper removed 2026-08-09 | `01` §3 |
+| 19 | `<SSH-TUNNEL-HOST>` policy? | **Now a single operator** — second operator removed 2026-08-09 | `01` §3 |
 
 ## ❓ Still open — only you can answer
 
