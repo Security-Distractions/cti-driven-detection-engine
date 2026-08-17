@@ -2,7 +2,7 @@
 
 Detection engineering, malware detonation and lab-build notes from my own time, outside of work.
 The companion blog is [www.securitydistractions.com](https://www.securitydistractions.com), whose
-source lives in [`blog/`](blog/).
+source lives in [Security-Distractions/blog](https://github.com/Security-Distractions/blog).
 
 ## What's here
 
@@ -14,7 +14,6 @@ source lives in [`blog/`](blog/).
 | [`canvases/`](canvases/) | Attack-path exports for [CompromiseCanvas](https://github.com/SagaLabs/CompromiseCanvas) |
 | [`tooling/`](tooling/) | Scripts — chiefly `elastic_to_canvas.py`, which turns Elastic telemetry into an attack-path canvas |
 | [`contributions/`](contributions/) | Work sent upstream: the pfSense/Squid integration fix and the CompromiseCanvas on-host attack path feature |
-| [`blog/`](blog/) | Hugo source for the blog (PaperMod, vendored) |
 
 ## Highlights
 
@@ -31,7 +30,7 @@ See [`detections/sigma-derived/`](detections/sigma-derived/).
 **The proxy blind spot** — Squid access logs were reaching Elasticsearch but arriving as
 un-decoded JSON in `message`, so a proxy query for outbound traffic returned nothing while
 tens of thousands of records sat unread. Two different log shapes, both now promoted to ECS.
-Written up in [`blog/content/posts/proxy-blind-spot.md`](blog/content/posts/proxy-blind-spot.md).
+Written up on the [blog](https://www.securitydistractions.com/posts/proxy-blind-spot/).
 
 **PyArmor-obfuscated loader** — full detonation analysis: a double-extension executable unpacking a
 PyArmor-protected PyInstaller payload, then adding Defender exclusions via WMIC.
