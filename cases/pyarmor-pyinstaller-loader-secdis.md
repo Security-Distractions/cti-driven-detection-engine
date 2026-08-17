@@ -86,11 +86,10 @@ No network indicators - none were observed.
 ## Attack path diagram
 
 Compromise Canvas export of the on-host attack path:
-**https://github.com/dclayton454/lab-canvases/blob/main/pyarmor-loader-20260817.json**
+**../canvases/pyarmor-loader-20260817.json**
 
 Download it, then in [CompromiseCanvas](https://github.com/SagaLabs/CompromiseCanvas) choose **Import
-JSON** and **double-click the `secdis` host** to walk the four steps. The repository is private because
-the export contains lab hostnames, local user paths and the sample hash.
+JSON** and **double-click the `secdis` host** to walk the four steps. The export is in this repository under `canvases/`.
 
 (Case file attachments are disabled on this Elastic Cloud deployment — `POST /api/files/files/...`
 returns "exists but is not available with the current configuration" — so canvases are versioned in
