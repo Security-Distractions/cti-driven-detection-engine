@@ -11,14 +11,17 @@
 
 ## Analysis
 
-# Sample C — Investigation
+> Detonated in the workshop as **Sample C**. That label is kept in the quoted commands and
+> file paths below because it is what the telemetry actually recorded — the directory on disk
+> really was `Sample C`.
 
+### Investigation
 **Host:** `secdis` (192.168.2.2) · **User:** `analyst` · **Detonated:** 2026-08-08 17:27:55 UTC · **Alert window:** 17:28:17–17:34:53 · **Detections:** 319 Elastic Defend/SIEM alerts · **Telemetry:** healthy (clock correct; Aug-6 backlog from an earlier snapshot filtered out)
 
 ---
 
 ## Step 1 — Overview
-Sample C is an unsigned **shellcode-injecting loader** with heavy **EDR/AV evasion** (direct syscalls, unbacked shellcode) and **SYSTEM-level Windows Defender neutralization via scheduled tasks**. It drops a secondary payload and beacons to **threat-intel-confirmed C2**. Most capable of the samples tested.
+ValleyRAT is an unsigned **shellcode-injecting loader** with heavy **EDR/AV evasion** (direct syscalls, unbacked shellcode) and **SYSTEM-level Windows Defender neutralization via scheduled tasks**. It drops a secondary payload and beacons to **threat-intel-confirmed C2**. Most capable of the samples tested.
 
 ## Step 2 — Layer 1: Delivery & Execution
 - 7-Zip (`7zFM.exe`→`7zG.exe x`) extracted the archive to `C:\Users\analyst\Downloads\a43853c1…\`.
@@ -58,8 +61,8 @@ Threat Intel IP Match ×62 · Local Scheduled Task Creation ×60 · Threat Intel
 ### File hashes
 | Type | Value | Artifact |
 |---|---|---|
-| SHA256 | `a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c` | Sample C (loader) |
-| imphash | `380560563ebacca1589d8d38ac610187` | Sample C |
+| SHA256 | `a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c` | ValleyRAT (loader) |
+| imphash | `380560563ebacca1589d8d38ac610187` | ValleyRAT |
 | SHA256 | `676a2a7b94ca2f8ec76352ee656e4d075bb342bd7ad6efbc7c19c060001eace7` | dropped `xhMLks.exe` |
 | imphash | `c79e73eafa46ab4b3f81c361fe54c70d` | `xhMLks.exe` (signed/trusted — abused) |
 

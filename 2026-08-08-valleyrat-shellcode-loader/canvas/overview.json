@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "timestamp": "2026-08-11T12:32:49Z",
-  "canvasTitle": "Sample C \u2014 on-host execution chain (secdis)",
+  "canvasTitle": "ValleyRAT \u2014 on-host execution chain (secdis)",
   "incidentLog": [
     {
       "id": "inc-1",

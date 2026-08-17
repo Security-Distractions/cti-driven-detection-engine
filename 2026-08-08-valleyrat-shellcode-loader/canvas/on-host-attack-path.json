@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "timestamp": "2026-08-11T13:15:04Z",
-  "canvasTitle": "Sample C \u2014 on-host attack path (secdis)",
+  "canvasTitle": "ValleyRAT \u2014 on-host attack path (secdis)",
   "incidentLog": [
     {
       "id": "inc-1",

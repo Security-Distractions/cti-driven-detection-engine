@@ -11,14 +11,17 @@
 
 ## Analysis
 
-# Sample D — Investigation
+> Detonated in the workshop as **Sample D**. That label is kept in the quoted commands and
+> file paths below because it is what the telemetry actually recorded — the directory on disk
+> really was `Sample D`.
 
+### Investigation
 **Host:** `secdis` (192.168.2.2) · **User:** `analyst` · **Detonated:** 2026-08-08 17:47:10 UTC · **Alert window:** 17:47:28–17:51:59 · **Detections:** 25 Elastic Defend alerts · **Family/attribution:** _left for analyst to determine from the IOCs below_
 
 ---
 
 ## Step 1 — Overview
-Sample D is a **.NET remote-access trojan (RAT)** with **keylogging**. It self-copies for **Run-key/Startup persistence** under a System32-masquerading name and attempts C2. Delivered as a 7-Zip archive, run manually.
+The .NET RAT is a **.NET remote-access trojan (RAT)** with **keylogging**. It self-copies for **Run-key/Startup persistence** under a System32-masquerading name and attempts C2. Delivered as a 7-Zip archive, run manually.
 
 ## Step 2 — Layer 1: Delivery & Execution
 - 7-Zip (`7zFM.exe`→`7zG.exe x`) extracted to `C:\Users\analyst\Downloads\bc033453…\`.
@@ -52,7 +55,7 @@ Malware Detection ×8 · Startup Persistence (Low-Rep) ×4 · Startup Persistenc
 ### File hashes
 | Type | Value | Artifact |
 |---|---|---|
-| SHA256 | `bc033453ae6a4965aac275ec154517bb55c428149ef4107951246ecf17e48674` | Sample D (also the `AggregatorHost.exe` persistence copy) |
+| SHA256 | `bc033453ae6a4965aac275ec154517bb55c428149ef4107951246ecf17e48674` | the .NET RAT (also the `AggregatorHost.exe` persistence copy) |
 | imphash | `f34d5f2d4577ed6d9ceec516c1f5a744` | *(generic .NET/mscoree imphash — NOT a reliable pivot)* |
 
 ### File-system / host artifacts

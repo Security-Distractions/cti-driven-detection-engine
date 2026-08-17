@@ -11,21 +11,24 @@
 
 ## Analysis
 
-# Sample B — Investigation
+> Detonated in the workshop as **Sample B**. That label is kept in the quoted commands and
+> file paths below because it is what the telemetry actually recorded — the directory on disk
+> really was `Sample B`.
 
+### Investigation
 **Host:** `secdis` (192.168.2.2) · **User:** `analyst` · **Detonated:** 2026-08-08 16:59 UTC · **Alert window:** 17:00:00–17:02:15 · **Detections:** 31 Elastic Defend alerts · **Telemetry:** healthy (Defend events + Sysmon logging with correct timestamps — full reconstruction available)
 
 ---
 
 ## Step 1 — Overview
-Sample B is an unsigned Windows executable that, on execution, attempts **C2 over DNS to a suspicious `.top` domain** and establishes host persistence via **Application Shimming (sdbinst)** and **COM registry modification**. Delivered as a 7-Zip archive and run manually. The C2 domain did not resolve during the run.
+Venus Stealer is an unsigned Windows executable that, on execution, attempts **C2 over DNS to a suspicious `.top` domain** and establishes host persistence via **Application Shimming (sdbinst)** and **COM registry modification**. Delivered as a 7-Zip archive and run manually. The C2 domain did not resolve during the run.
 
 ## Step 2 — Layer 1: Initial Access / Delivery
 - Archive opened in 7-Zip (`7zFM.exe`), extracted via `7zG.exe x` to `C:\Users\analyst\Downloads\f0a10f8d…272b8\`.
 - Sample staged in `C:\Users\analyst\Downloads\Sample B\`.
 
 ## Step 3 — Layer 2: Execution
-- `explorer.exe` → **Sample B exe** at 16:59:36 (and again 16:59:41) — user execution.
+- `explorer.exe` → **Venus Stealer exe** at 16:59:36 (and again 16:59:41) — user execution.
 - Flagged by ProblemChild ML (`problemchild.prediction=1`).
 
 ## Step 4 — Layer 3: Command & Control
@@ -57,9 +60,9 @@ Network Activity to a Suspicious Top Level Domain ×15 · Malware Detection Aler
 ### File hashes
 | Type | Value | Artifact |
 |---|---|---|
-| SHA256 | `f0a10f8d919b4e785e04461ed2adde2d51608e50f69e1e4995c85b71472272b8` | Sample B |
-| imphash | `934864fad2e0d984459abdc576cdc4a7` | Sample B |
-| signature | none (unsigned) | Sample B |
+| SHA256 | `f0a10f8d919b4e785e04461ed2adde2d51608e50f69e1e4995c85b71472272b8` | Venus Stealer |
+| imphash | `934864fad2e0d984459abdc576cdc4a7` | Venus Stealer |
+| signature | none (unsigned) | Venus Stealer |
 
 ### Network artifacts
 - **C2 domain:** `strmer.top` (suspicious `.top` TLD) — contacted via DNS by the sample; **did not resolve** (no IP / no session). Primary network IOC.

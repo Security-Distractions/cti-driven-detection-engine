@@ -7,14 +7,17 @@
 
 ## Analysis
 
-# Sample A — Investigation
+> Detonated in the workshop as **Sample A**. That label is kept in the quoted commands and
+> file paths below because it is what the telemetry actually recorded — the directory on disk
+> really was `Sample A`.
 
+### Investigation
 **Host:** `secdis` (192.168.2.2) · **User:** `analyst` · **Detonated:** 2026-08-08 15:59 UTC · **Status:** terminated (no activity after 16:27) · **Detections:** 76 Elastic Defend alerts
 
 ---
 
 ## Step 1 — Overview
-Sample A is a **PyInstaller-packaged Python dropper** that installs a **ScreenConnect (ConnectWise Control) RMM** implant for remote access and performs **aggressive Microsoft Defender neutralization**. Delivered as a 7-Zip archive, executed manually by the user.
+The ScreenConnect RMM loader is a **PyInstaller-packaged Python dropper** that installs a **ScreenConnect (ConnectWise Control) RMM** implant for remote access and performs **aggressive Microsoft Defender neutralization**. Delivered as a 7-Zip archive, executed manually by the user.
 
 ## Step 2 — Layer 1: Initial Access / Delivery
 - Archive extracted via **7-Zip** (`7zG.exe x`) to `C:\Users\analyst\Downloads\Sample A\`.
@@ -60,8 +63,8 @@ Raw endpoint **event** telemetry (Elastic Defend `endpoint.events.*` and Sysmon)
 ### File hashes
 | Type | Value | Artifact |
 |---|---|---|
-| SHA256 | `12833af0f0d1c3c193cf0aeadb7c2dbb3b6b9f4a600e65b43e3997fcd6621e88` | Sample A (dropper) |
-| imphash | `dcaf48c1f10b0efa0a4472200f3850ed` | Sample A |
+| SHA256 | `12833af0f0d1c3c193cf0aeadb7c2dbb3b6b9f4a600e65b43e3997fcd6621e88` | the ScreenConnect RMM loader (dropper) |
+| imphash | `dcaf48c1f10b0efa0a4472200f3850ed` | the ScreenConnect RMM loader |
 | SHA256 | `4f8f750ffdd2a5df67946fdd29d4bb7a2d9b88d8495f9980d99f03e053f3b0a0` | Dropped payload `9yxt0.exe` |
 
 ### File-system artifacts

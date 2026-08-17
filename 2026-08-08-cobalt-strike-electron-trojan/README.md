@@ -11,14 +11,17 @@
 
 ## Analysis
 
-# Sample E — Investigation
+> Detonated in the workshop as **Sample E**. That label is kept in the quoted commands and
+> file paths below because it is what the telemetry actually recorded — the directory on disk
+> really was `Sample E`.
 
+### Investigation
 **Host:** `secdis` (192.168.2.2) · **User:** `analyst` · **Detonated:** 2026-08-08 18:07:15 UTC · **Alert window:** 18:07:44–18:12:15 · **Detections:** 93 alerts · **Family/attribution:** _left for analyst to determine from the IOCs below_
 
 ---
 
 ## Step 1 — Overview
-Sample E is delivered as a **trojanized Electron application** ("wczt-win-8.1.65-x64"). It side-loads shellcode with EDR-evasion (NTDLL unhooking), timestomps dropped files, and beacons to a Telegram-typosquat C2, pulling a stage from an AWS S3 bucket.
+The Cobalt Strike loader is delivered as a **trojanized Electron application** ("wczt-win-8.1.65-x64"). It side-loads shellcode with EDR-evasion (NTDLL unhooking), timestomps dropped files, and beacons to a Telegram-typosquat C2, pulling a stage from an AWS S3 bucket.
 
 ## Step 2 — Layer 1: Delivery & Execution
 - 7-Zip-extracted to `C:\Users\analyst\Downloads\Sample E\`.
@@ -52,7 +55,7 @@ Potential Timestomp ×34 · Network Activity to Suspicious TLD ×22 · Shellcode
 ### File hashes
 | Type | Value | Artifact |
 |---|---|---|
-| SHA256 | `39c69cb0f29f8e9f41fa305cb1adf34762e5d8131ae348553b089377236c4f38` | Sample E loader |
+| SHA256 | `39c69cb0f29f8e9f41fa305cb1adf34762e5d8131ae348553b089377236c4f38` | the Cobalt Strike loader loader |
 | imphash | `027ea80e8125c6dda271246922d4c3b0` | loader |
 | SHA256 | `0f41af982ffa0570df698cf1f4227f8e5c5ee47820dc48bd647e077d611e8954` | `wczt-win-8.1.65-x64).exe` (Electron installer) |
 | imphash | `9a2d056f27357b32cd4253e7955deb15` | wczt installer (signature invalid — `errorBadDigest`) |
