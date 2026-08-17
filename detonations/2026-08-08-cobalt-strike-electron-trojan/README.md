@@ -117,8 +117,12 @@ Techniques observed: `T1027` Obfuscated Files or Information, `T1027.015` Compre
 
 | Type | Value |
 |---|---|
-| SHA256 | `0f41af982ffa0570df698cf1f4227f8e5c5ee47820dc48bd647e077d611e8954` |
-| Domain | `dm.telegrem.store` |
+| SHA256 (sample) | `39c69cb0f29f8e9f41fa305cb1adf34762e5d8131ae348553b089377236c4f38` |
+| SHA256 (component) | `0f41af982ffa0570df698cf1f4227f8e5c5ee47820dc48bd647e077d611e8954` |
+| Domain (C2) | `dm.telegrem.store` |
+| IP | `118.107.43.16` |
+| IP | `118.107.43.138` |
+| Payload host | `xjsjkjdsjjd.s3.ap-southeast-1.amazonaws.com` |
 
 
 ## Processes seen in alerts

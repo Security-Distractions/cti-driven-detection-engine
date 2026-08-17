@@ -99,6 +99,10 @@ _none_
 
 ## Indicators
 
+| Type | Value |
+|---|---|
+| IP | `198.23.185.237:8041` (ScreenConnect relay) |
+
 _none_
 
 

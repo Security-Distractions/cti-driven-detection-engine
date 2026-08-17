@@ -154,7 +154,9 @@ Techniques observed: `T1036` Masquerading, `T1036.001` Invalid Code Signature, `
 | SHA256 | `2363383be9c4b6f815cb0192ccd5efab0658d508402de1bf00c4d9617416688c` |
 | SHA256 | `f0a10f8d919b4e785e04461ed2adde2d51608e50f69e1e4995c85b71472272b8` |
 | SHA256 | `e5e88e145be3add238e49244361c50c501213264307bbb7143f7dd0cef720119` |
-| Domain | `strmer.top` |
+| IP | `134.209.42.122` (threat-intel matched) |
+| IP | `39.103.20.88:443` |
+| IP | `47.79.64.254:443` |
 
 
 ## Processes seen in alerts
