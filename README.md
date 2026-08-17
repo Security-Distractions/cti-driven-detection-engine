@@ -20,7 +20,7 @@ source lives in [Security-Distractions/blog](https://github.com/Security-Distrac
 **On-host attack paths in CompromiseCanvas** — the tool modelled movement *between* hosts but had
 nowhere to record what happened *inside* one. Added a drill-down: double-click a host and walk its
 attack path step by step, with tactic, technique, MITRE ID and the command lines that evidence it.
-Submitted as [SagaLabs/CompromiseCanvas#21](https://github.com/SagaLabs/CompromiseCanvas/pull/21).
+Merged upstream as [SagaLabs/CompromiseCanvas#21](https://github.com/SagaLabs/CompromiseCanvas/pull/21).
 See [`contributions/compromise-canvas-on-host-path/`](contributions/compromise-canvas-on-host-path/).
 
 **Sigma → Elastic conversions** — three rules converted with pySigma and the `ecs_windows` pipeline,
