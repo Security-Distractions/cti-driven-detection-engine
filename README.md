@@ -9,9 +9,8 @@ source lives in [Security-Distractions/blog](https://github.com/Security-Distrac
 | Path | |
 |---|---|
 | [`lab/`](lab/) | How the detonation lab is built: network segments, Windows analysis VM, Elastic logging pipeline, open questions, and a running list of corrections |
+| [detonations](https://github.com/Security-Distractions/detonations) | **Separate repo** — per-detonation analysis, results and attack-path canvases |
 | [`detections/`](detections/) | Detection content — Sigma rules converted to Elastic, and notes on which rules were disabled and why |
-| [`cases/`](cases/) | Detonation write-ups: full analysis from detections and telemetry |
-| [`canvases/`](canvases/) | Attack-path exports for [CompromiseCanvas](https://github.com/SagaLabs/CompromiseCanvas) |
 | [`tooling/`](tooling/) | Scripts — chiefly `elastic_to_canvas.py`, which turns Elastic telemetry into an attack-path canvas |
 | [`contributions/`](contributions/) | Work sent upstream: the pfSense/Squid integration fix and the CompromiseCanvas on-host attack path feature |
 
@@ -33,8 +32,8 @@ tens of thousands of records sat unread. Two different log shapes, both now prom
 Written up on the [blog](https://www.securitydistractions.com/posts/proxy-blind-spot/).
 
 **PyArmor-obfuscated loader** — full detonation analysis: a double-extension executable unpacking a
-PyArmor-protected PyInstaller payload, then adding Defender exclusions via WMIC.
-See [`cases/`](cases/).
+PyArmor-protected PyInstaller payload, then adding Defender exclusions via WMIC. That write-up and
+five others live in [detonations](https://github.com/Security-Distractions/detonations).
 
 ## Reproducing the tooling
 
@@ -43,7 +42,7 @@ See [`cases/`](cases/).
 ```bash
 export ES_URL=https://your-cluster:9243 ES_USER=... ES_PASS=...
 python3 tooling/elastic_to_canvas.py --host secdis --since 2026-08-17T10:00:00Z --mode host \
-        > canvases/my-detonation.json
+        > canvas/on-host-attack-path.json
 ```
 
 Import the result into CompromiseCanvas with **Import JSON**, then double-click the host node.
