@@ -28,17 +28,17 @@ detail one level down.
 export ES_URL=https://your-deployment:9243 ES_USER=... ES_PASS=...
 
 # drill-down view — one host node with an ordered step chain (default)
-./elastic_to_canvas.py --host secdis \
+./elastic_to_canvas.py --host analysis-host \
     --from 2026-08-08T17:26:00Z --to 2026-08-08T17:40:00Z \
-    --title "Sample C — on-host attack path (secdis)" --out sample-c-host.json
+    --title "Sample C — on-host attack path (analysis-host)" --out sample-c-host.json
 
 # one node per MITRE technique (works with upstream Compromise Canvas)
-./elastic_to_canvas.py --host secdis \
+./elastic_to_canvas.py --host analysis-host \
     --from 2026-08-08T17:26:00Z --to 2026-08-08T17:40:00Z \
     --mode technique --out sample-c-technique.json
 
 # detail view — one node per distinct process behaviour
-./elastic_to_canvas.py --host secdis \
+./elastic_to_canvas.py --host analysis-host \
     --from 2026-08-08T17:26:00Z --to 2026-08-08T17:40:00Z \
     --mode process --out sample-c-process.json
 ```
@@ -95,7 +95,7 @@ feature branch: it imports, the host node shows an 8-step ribbon, and
 double-clicking opens the drill-down with all 8 steps in order, no console
 errors.
 
-## Sample C result (secdis, 2026-08-08 17:26–17:40 UTC)
+## Sample C result (analysis-host, 2026-08-08 17:26–17:40 UTC)
 
 206 process events → 65 distinct behaviours → **8 steps**, 27 incident log entries.
 

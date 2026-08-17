@@ -2,11 +2,11 @@
 
 *Detonated 2026-08-08 · severity **critical** · 324 correlated alerts across 39 rules*
 
-**Tags:** `malware`, `sample-c`, `shellcode-loader`, `edr-evasion`, `scheduled-task`, `defender-tamper`, `c2`, `threat-intel-match`, `workshop`, `secdis`, `T1055`, `T1053`, `T1562`
+**Tags:** `malware`, `sample-c`, `shellcode-loader`, `edr-evasion`, `scheduled-task`, `defender-tamper`, `c2`, `threat-intel-match`, `workshop`, `analysis-host`, `T1055`, `T1053`, `T1562`
 
 **Alert window:** 2026-08-08T17:28:17Z → 2026-08-08T17:36:33Z
 
-**Host:** secdis (324)
+**Host:** analysis-host (324)
 
 
 ## Analysis
@@ -16,7 +16,7 @@
 > really was `Sample C`.
 
 ### Investigation
-**Host:** `secdis` (192.168.2.2) · **User:** `analyst` · **Detonated:** 2026-08-08 17:27:55 UTC · **Alert window:** 17:28:17–17:34:53 · **Detections:** 319 Elastic Defend/SIEM alerts · **Telemetry:** healthy (clock correct; Aug-6 backlog from an earlier snapshot filtered out)
+**Host:** `analysis-host` (<analysis-host-ip>) · **User:** `analyst` · **Detonated:** 2026-08-08 17:27:55 UTC · **Alert window:** 17:28:17–17:34:53 · **Detections:** 319 Elastic Defend/SIEM alerts · **Telemetry:** healthy (clock correct; Aug-6 backlog from an earlier snapshot filtered out)
 
 ---
 

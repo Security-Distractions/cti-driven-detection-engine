@@ -111,7 +111,7 @@ commit messages, and I'm happy to change any of them.
 ### Try it without generating data
 
 `examples/on-host-attack-path-example.json` — **Import JSON**, then double-click
-the `secdis` host. It's a real detonation reduced to eight steps, with genuine
+the `analysis-host` host. It's a real detonation reduced to eight steps, with genuine
 command lines.
 
 ### Screenshots

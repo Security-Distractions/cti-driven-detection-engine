@@ -2,7 +2,7 @@
 
 *Detonated 2026-08-08 · severity **critical** · 0 correlated alerts across 0 rules*
 
-**Tags:** `malware`, `sample-a`, `screenconnect`, `rmm-abuse`, `pyinstaller`, `workshop`, `secdis`, `T1219`, `T1562`
+**Tags:** `malware`, `sample-a`, `screenconnect`, `rmm-abuse`, `pyinstaller`, `workshop`, `analysis-host`, `T1219`, `T1562`
 
 
 ## Analysis
@@ -12,7 +12,7 @@
 > really was `Sample A`.
 
 ### Investigation
-**Host:** `secdis` (192.168.2.2) · **User:** `analyst` · **Detonated:** 2026-08-08 15:59 UTC · **Status:** terminated (no activity after 16:27) · **Detections:** 76 Elastic Defend alerts
+**Host:** `analysis-host` (<analysis-host-ip>) · **User:** `analyst` · **Detonated:** 2026-08-08 15:59 UTC · **Status:** terminated (no activity after 16:27) · **Detections:** 76 Elastic Defend alerts
 
 ---
 
@@ -54,7 +54,7 @@ The ScreenConnect RMM loader is a **PyInstaller-packaged Python dropper** that i
 Malware Detection (on-disk), Windows Defender Exclusions via WMI, Windows Defender Exclusions via PowerShell, Suspicious Windows Defender Exclusions Added via PowerShell, Disabling User Account Control via Registry, PowerShell Script Block Logging Disabled, Suspicious Windows Schedule Child Process, File Compressed/Archived by Unsigned Process.
 
 ## Step 9 — Visibility Gap (finding)
-Raw endpoint **event** telemetry (Elastic Defend `endpoint.events.*` and Sysmon) is **absent for the detonation window 15:59–16:27**; both resumed at **16:27:20** with `elastic_agent` "failed to index document" errors. Elastic Defend **alerts** (fast path) were unaffected — this reconstruction is alert-derived. Recommend investigating the secdis agent event-shipping interruption (possible malware interference with logging vs. an ingest/mapping failure).
+Raw endpoint **event** telemetry (Elastic Defend `endpoint.events.*` and Sysmon) is **absent for the detonation window 15:59–16:27**; both resumed at **16:27:20** with `elastic_agent` "failed to index document" errors. Elastic Defend **alerts** (fast path) were unaffected — this reconstruction is alert-derived. Recommend investigating the analysis-host agent event-shipping interruption (possible malware interference with logging vs. an ingest/mapping failure).
 
 ---
 

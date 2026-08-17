@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "timestamp": "2026-08-11T12:34:20Z",
-  "canvasTitle": "ValleyRAT \u2014 on-host attack path (secdis)",
+  "canvasTitle": "ValleyRAT \u2014 on-host attack path (analysis-host)",
   "incidentLog": [
     {
       "id": "inc-1",
@@ -169,7 +169,7 @@
   "diagram": {
     "nodes": [
       {
-        "id": "host-secdis",
+        "id": "host-analysis-host",
         "type": "labeledGroupNode",
         "position": {
           "x": 0,
@@ -177,7 +177,7 @@
         },
         "zIndex": 0,
         "data": {
-          "label": "secdis  \u2014  on-host attack path by technique",
+          "label": "analysis-host  \u2014  on-host attack path by technique",
           "type": "group",
           "criticality": "High",
           "services": [],

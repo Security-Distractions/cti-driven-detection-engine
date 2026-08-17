@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "timestamp": "2026-08-11T13:15:04Z",
-  "canvasTitle": "ValleyRAT \u2014 on-host attack path (secdis)",
+  "canvasTitle": "ValleyRAT \u2014 on-host attack path (analysis-host)",
   "incidentLog": [
     {
       "id": "inc-1",
@@ -205,7 +205,7 @@
         }
       },
       {
-        "id": "host-secdis",
+        "id": "host-analysis-host",
         "type": "customNode",
         "position": {
           "x": 520,
@@ -213,7 +213,7 @@
         },
         "zIndex": 1,
         "data": {
-          "label": "secdis",
+          "label": "analysis-host",
           "type": "workstation",
           "hostname": "",
           "ipAddress": "",
@@ -317,7 +317,7 @@
       {
         "id": "e-attacker-host",
         "source": "attacker-infra",
-        "target": "host-secdis",
+        "target": "host-analysis-host",
         "type": "customEdge",
         "data": {
           "label": "initial access",

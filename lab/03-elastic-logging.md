@@ -26,7 +26,7 @@ Elastic into the lab — worth stating on the diagram, as people often assume ot
 
 Derived from data streams observed in use. Group them by origin when drawing.
 
-### From `secdis` (Windows 11) — ships **direct** to Elastic Cloud **[V]**
+### From `analysis-host` (Windows 11) — ships **direct** to Elastic Cloud **[V]**
 
 | Integration | Dataset | 24h volume |
 |---|---|---|
@@ -43,15 +43,15 @@ Derived from data streams observed in use. Group them by origin when drawing.
 | Windows — PowerShell | `windows.powershell` (+ `windows.powershell_operational`) | 102 |
 | Windows — AppLocker | `windows.applocker_exe_and_dll`, `windows.applocker_msi_and_script` | present |
 
-Note `secdis` ships **directly** to Elastic Cloud (it runs its own Elastic Agent),
-unlike OPNsense which relays through util-debian. Two different paths — draw them
+Note `analysis-host` ships **directly** to Elastic Cloud (it runs its own Elastic Agent),
+unlike OPNsense which relays through collector. Two different paths — draw them
 differently.
 
-### From OPNsense (VM 100) — **relayed via util-debian** **[V]**
+### From OPNsense (VM 100) — **relayed via collector** **[V]**
 
 > **Correction (verified 2026-08-09):** OPNsense does **not** ship to Elastic Cloud
-> directly. It syslogs to **util-debian `192.168.3.2:9001`**, where the Elastic Agent
-> input `tcp-pfsense.log` receives it and forwards to Elastic Cloud. util-debian is the
+> directly. It syslogs to **collector `<collector-ip>:9001`**, where the Elastic Agent
+> input `tcp-pfsense.log` receives it and forwards to Elastic Cloud. collector is the
 > lab's **log relay**, not a peripheral node. Draw it that way.
 
 | Integration | Dataset | 24h volume **[V]** |
@@ -88,12 +88,12 @@ dataset in the whole cluster**.
 | `ti_abusech.malwarebazaar` | 737 |
 | `ti_abusech.ja3_fingerprints` | 388 |
 
-### From util-debian **[V]**
+### From collector **[V]**
 
 Two distinct roles — keep them separate on the diagram:
 
 1. **Relay** — hosts the Elastic Agent inputs that receive OPNsense syslog:
-   `tcp-pfsense.log` (bound to `192.168.3.2:9001`), plus `tcp/udp/filestream-squid.log`
+   `tcp-pfsense.log` (bound to `<collector-ip>:9001`), plus `tcp/udp/filestream-squid.log`
    and `logfile-suricata.eve`.
 2. **Monitored host** — ships its own `system.*` datasets (syslog, auth, security,
    application, plus CPU/memory/disk/network metrics).
@@ -102,8 +102,8 @@ The listener appears in `ss` as process **`elastic-otel-co`** — this is the El
 Agent's collector component hosting the input, **not** a separate unrelated OTel
 deployment. (An earlier draft of this pack wrongly called it unrelated.)
 
-**Only two hosts report telemetry** over 24h **[V]**: `secdis` (96,279 docs) and
-`util-debian` (9,355). OPNsense has no `host.name` of its own because its events arrive
+**Only two hosts report telemetry** over 24h **[V]**: `analysis-host` (96,279 docs) and
+`collector` (9,355). OPNsense has no `host.name` of its own because its events arrive
 via the relay.
 
 ---
@@ -120,7 +120,7 @@ via the relay.
 Squid on OPNsense
   └─ logformat "opnsense" = ECS-JSON      (squid.conf line 152)
       access_log syslog:local4.info opnsense  (line 153)
-  └─ syslog-ng  ──► util-debian 192.168.3.2:9001  (tcp-default input)
+  └─ syslog-ng  ──► collector <collector-ip>:9001  (tcp-default input)
       └─ Elastic Agent 9.3.2 (Fleet-managed filebeat)
           └─ ingest pipeline logs-pfsense.log-1.25.2-squid
               └─ data stream logs-pfsense.log-*
@@ -145,7 +145,7 @@ instead of grokking it — a `json` processor with `add_to_root: true`,
 1. **`logs-pfsense.log@custom`** — a custom pipeline (JSON decode + reroute to a
    `squid.access` data stream) was created and then **deleted**: it never fired,
    because the grok failure aborted the pipeline *before* `@custom` runs.
-2. **`192.168.3.2:9537`** — syslog-ng had a stale Squid destination pointing at a port
+2. **`<collector-ip>:9537`** — syslog-ng had a stale Squid destination pointing at a port
    with no listener, producing a "Connection refused" flood. Pure noise: the `9001`
    forward has **no program filter**, so it was already carrying Squid all along.
 
@@ -159,11 +159,11 @@ Kibana data view **`logs-pfsense.log-*`**, filter `squid.url.original: *`.
 | `squid.http.request.method` | `GET`, `CONNECT` |
 | `squid.http.response.body.status_code` | `200` |
 | `squid.labels.request_status` | `TCP_MISS`, `TCP_DENIED`, `NONE_NONE` |
-| `squid.source.ip` | `192.168.2.2` (dropped when `"-"`) |
+| `squid.source.ip` | `<analysis-host-ip>` (dropped when `"-"`) |
 | `squid.service.type` | `squid` |
 
 Verified working at the time: **20 parsed events in 5 minutes**, live browsing from
-`192.168.2.2` captured with full HTTPS URLs.
+`<analysis-host-ip>` captured with full HTTPS URLs.
 
 ### Related fixes from the same session
 
@@ -232,8 +232,8 @@ saying "recheck storage before a workshop" is stale; there is ample headroom.
 |---|---|
 | ~~Squid log ingestion broken~~ | ✅ **RESOLVED 2026-08-08** — see §4 |
 | OPNsense memory under load | sslbump + Suricata IPS caused Squid segfaults at 4.3 GB; RAM raised. Re-check before a heavy workshop |
-| Agent health after rollback ⚠️ | **Live example:** `secdis` last shipped **2026-08-08 19:44 UTC** (~19h before this audit) despite the VM running |
-| Clock drift on `secdis` | Events land outside the expected time window and appear "missing" |
+| Agent health after rollback ⚠️ | **Live example:** `analysis-host` last shipped **2026-08-08 19:44 UTC** (~19h before this audit) despite the VM running |
+| Clock drift on `analysis-host` | Events land outside the expected time window and appear "missing" |
 | ~~Storage pressure~~ | ✅ **Resolved** — cluster at 5% (678 GB free/node) |
 
 ---
@@ -244,12 +244,12 @@ Draw **left → right**, four columns:
 
 **Sources** → **Shipper** → **Elastic Cloud** → **Analyst outputs**
 
-- **Sources:** `secdis` (Defend, Sysmon, PowerShell, Security, AppLocker) — its own
+- **Sources:** `analysis-host` (Defend, Sysmon, PowerShell, Security, AppLocker) — its own
   agent, shipping **direct**; OPNsense (Suricata, filterlog, Squid, DNS) — syslog to
-  **util-debian:9001**; util-debian's own `system.*`; six AbuseCH TI feeds pulled by
+  **collector:9001**; collector's own `system.*`; six AbuseCH TI feeds pulled by
   Elastic Cloud itself
-- **Shipper:** two distinct paths — `secdis` agent → Elastic Cloud, and OPNsense →
-  **util-debian relay** (Elastic Agent) → Elastic Cloud. Do **not** draw OPNsense
+- **Shipper:** two distinct paths — `analysis-host` agent → Elastic Cloud, and OPNsense →
+  **collector relay** (Elastic Agent) → Elastic Cloud. Do **not** draw OPNsense
   connecting straight to Elastic Cloud; that was wrong in the first draft.
 - **Elastic Cloud:** data streams → ILM tiers → detection rules → ML jobs → alerts
 - **Outputs:** Alerts → Cases → workshop narrative

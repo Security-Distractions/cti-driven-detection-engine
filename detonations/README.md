@@ -13,7 +13,7 @@ Kibana login. The cases remain the live record; each write-up cites its case ID.
 
 | Date | Detonation | Family | Alerts | Rules | Severity | Canvas |
 |---|---|---|---|---|---|---|
-| 2026-08-17 | [PyArmor-obfuscated PyInstaller loader — Defender exclusion abuse via WMIC (SECDIS, 2026-08-17)](2026-08-17-pyarmor-pyinstaller-loader/) | — | 69 | 17 | high | yes |
+| 2026-08-17 | [PyArmor-obfuscated PyInstaller loader — Defender exclusion abuse via WMIC (analysis-host, 2026-08-17)](2026-08-17-pyarmor-pyinstaller-loader/) | — | 69 | 17 | high | yes |
 | 2026-08-08 | [Venus Stealer — COM hijack persistence and DNS C2](2026-08-08-venus-stealer-com-hijack-dns-c2/) | `py.venus_stealer` | 31 | 5 | critical | — |
 | 2026-08-08 | [ValleyRAT — shellcode loader with EDR evasion and Defender tampering](2026-08-08-valleyrat-shellcode-loader/) | `win.valley_rat` | 324 | 39 | critical | yes |
 | 2026-08-08 | [RMM abuse loader — ScreenConnect deployed via PyInstaller](2026-08-08-rmm-abuse-loader-screenconnect/) | `elf.kuiper` (disputed) | 0 | 0 | critical | — |
@@ -46,6 +46,6 @@ walk the steps. Older builds still import them, but render the steps as a flat l
 ## A note on scope
 
 These are detonations of live malware inside an isolated lab. Hashes and domains are published
-deliberately as indicators. Lab hostnames and RFC 1918 addressing (`192.168.2.0/24`) are kept because the analysis is
+deliberately as indicators. Lab hostnames and RFC 1918 addressing (`<detonation-subnet>`) are kept because the analysis is
 unreadable without them. Cluster endpoints and access paths are redacted, and the lab account
 name is normalised to `analyst`.

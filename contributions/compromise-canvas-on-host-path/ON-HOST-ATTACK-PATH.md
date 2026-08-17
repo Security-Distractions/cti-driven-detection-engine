@@ -105,7 +105,7 @@ host and window, folds it into technique-level steps, and writes the canvas:
 
 ```bash
 export ES_URL=https://...:9243 ES_USER=... ES_PASS=...
-./elastic_to_canvas.py --host secdis \
+./elastic_to_canvas.py --host analysis-host \
     --from 2026-08-08T17:26:00Z --to 2026-08-08T17:40:00Z \
     --mode host --out sample-c-host.json
 ```

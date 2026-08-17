@@ -1,4 +1,4 @@
-# Windows Detonation Lab — `secdis`
+# Windows Detonation Lab — `analysis-host`
 
 Reconstructed from session transcripts on this host **[T]**; network reachability
 re-checked 2026-08-09 **[V]**. Items marked **[?]** need your confirmation.
@@ -10,21 +10,21 @@ re-checked 2026-08-09 **[V]**. Items marked **[?]** need your confirmation.
 | Field | Value |
 |---|---|
 | Proxmox VMID | **101** |
-| VM name | `win11-analysis` |
-| OS hostname | **`secdis`** |
+| VM name | `analysis-vm` |
+| OS hostname | **`analysis-host`** |
 | OS | Windows 11 |
 | RAM | 4 GB |
-| LAN address | `192.168.2.2` (detonation LAN) |
-| Default gateway / resolver / proxy | `192.168.2.1` (OPNsense) |
-| Internet egress | **Only** via Squid at `192.168.2.1:3128` |
+| LAN address | `<analysis-host-ip>` (detonation LAN) |
+| Default gateway / resolver / proxy | `<firewall-detonation-if>` (OPNsense) |
+| Internet egress | **Only** via Squid at `<firewall-detonation-if>:3128` |
 
-**Reachability note [V]:** `192.168.2.2` did **not** answer ICMP from util-debian on
+**Reachability note [V]:** `<analysis-host-ip>` did **not** answer ICMP from collector on
 2026-08-09. Expected if the host is powered off, mid-rollback, or blocking ICMP —
 but confirm which, as it changes how you draw the trust boundary.
 
 ---
 
-## 2. Endpoint telemetry on `secdis`
+## 2. Endpoint telemetry on `analysis-host`
 
 | Source | Elastic data stream | Notes |
 |---|---|---|
@@ -47,7 +47,7 @@ Both Sysmon and Elastic Defend ship via **Elastic Agent** enrolled in Fleet.
 
 The established loop for each sample:
 
-1. Roll `secdis` back to a clean snapshot
+1. Roll `analysis-host` back to a clean snapshot
 2. Verify Sysmon + Elastic Defend are shipping, and the **clock is correct**
 3. Detonate the sample (labelled `Sample A`…`Sample E`)
 4. Let it run ~5 minutes before analysis
@@ -69,12 +69,12 @@ Cases created during that work (Kibana → Security → Cases) **[T]**:
 The most instructive finding in the lab. The gap it describes was **fixed on
 2026-08-08**; it is kept here because the architecture point still stands.
 
-Because `secdis` egresses through the Squid proxy, **host telemetry only ever sees the
-connection to `192.168.2.1:3128`** — never the true C2 destination. The real
+Because `analysis-host` egresses through the Squid proxy, **host telemetry only ever sees the
+connection to `<firewall-detonation-if>:3128`** — never the true C2 destination. The real
 destination exists *only* in the proxy log.
 
 ```
-secdis                OPNsense (192.168.2.1)             Internet
+analysis-host                OPNsense (<firewall-detonation-if>)             Internet
   │                          │                              │
   ├── TCP :3128 ────────────►│                              │
   │   [visible to Defend     ├── HTTP CONNECT ─────────────►│
@@ -96,7 +96,7 @@ So the teaching point is now a *before/after* story rather than a live limitatio
 
 | | Before 2026-08-08 | After |
 |---|---|---|
-| Host telemetry | sees only `192.168.2.1:3128` | unchanged — still only the proxy |
+| Host telemetry | sees only `<firewall-detonation-if>:3128` | unchanged — still only the proxy |
 | Squid log | present but **unparsed** (grok expected text, Squid emits ECS-JSON) | parsed, queryable |
 | Net effect | **true C2 destination invisible** | **C2 destination recoverable** |
 
@@ -111,7 +111,7 @@ encrypted-proxy architecture moves the evidence rather than destroying it.
 | Question | Answer |
 |---|---|
 | Domain-joined or standalone? | **Standalone** — no `host.domain` on any of 577,679 Windows docs in 30d |
-| Only Windows host? | **Yes** — `secdis` is the only one, ever |
+| Only Windows host? | **Yes** — `analysis-host` is the only one, ever |
 | Clean baseline snapshot? | **`golden-baseline`** (2026-07-22 16:44). Also present: `migrated-working`, `ProxmoxReady` |
 | Detonation LAN isolated? | **No** — NATs to the real internet via OPNsense `em0`. Only the home net (`10.0.0.0/8`) and other RFC1918 are blocked |
 | Why no ping reply? | **The host is powered down between exercises** (owner-confirmed). pf permits utility→detonation, so the firewall is not the cause |
@@ -119,12 +119,12 @@ encrypted-proxy architecture moves the evidence rather than destroying it.
 | Cause of clock drift? | **[?] Still open** — likely no NTP after snapshot restore |
 
 **Why this matters for detonations:** with Defender disabled by Elastic Security,
-**Elastic Defend is the only endpoint protection** on `secdis`. Detonation results
+**Elastic Defend is the only endpoint protection** on `analysis-host`. Detonation results
 reflect Defend's detection surface alone — nothing is being caught or quarantined by
 Defender first, so samples run further than they would on a stock Windows host. Good
 for teaching detection engineering; worth stating explicitly to a workshop audience.
 
-> **`secdis` is powered down between exercises** (owner-confirmed 2026-08-10). Proxmox
+> **`analysis-host` is powered down between exercises** (owner-confirmed 2026-08-10). Proxmox
 > reports VM 101 as `running` with uptime, but that is the hypervisor's view only — the
 > guest OS is not up: the QEMU guest agent does not respond, there is no ARP entry on
 > the detonation LAN, and telemetry stopped at 2026-08-08 19:44 UTC.
@@ -141,7 +141,7 @@ A **numbered sequence diagram** works better here than a topology map:
 
 1. Analyst rolls back snapshot (Proxmox → VM 101)
 2. Analyst verifies agent health + clock
-3. Malware executes on `secdis`
+3. Malware executes on `analysis-host`
 4. Host telemetry (Defend, Sysmon, PowerShell, Security) → Elastic Agent → Elastic Cloud
 5. Network egress → OPNsense: filterlog + Suricata + **Squid** + DNS
 6. Detection rules fire → alerts → analyst links into an Elastic Case

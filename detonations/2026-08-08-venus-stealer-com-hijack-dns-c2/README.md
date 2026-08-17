@@ -2,11 +2,11 @@
 
 *Detonated 2026-08-08 · severity **critical** · 31 correlated alerts across 5 rules*
 
-**Tags:** `malware`, `sample-b`, `c2-dns`, `suspicious-tld`, `strmer.top`, `com-hijack`, `application-shimming`, `workshop`, `secdis`, `T1546`, `T1568`
+**Tags:** `malware`, `sample-b`, `c2-dns`, `suspicious-tld`, `strmer.top`, `com-hijack`, `application-shimming`, `workshop`, `analysis-host`, `T1546`, `T1568`
 
 **Alert window:** 2026-08-08T17:00:00Z → 2026-08-08T17:02:15Z
 
-**Host:** secdis (31)
+**Host:** analysis-host (31)
 
 
 ## Analysis
@@ -16,7 +16,7 @@
 > really was `Sample B`.
 
 ### Investigation
-**Host:** `secdis` (192.168.2.2) · **User:** `analyst` · **Detonated:** 2026-08-08 16:59 UTC · **Alert window:** 17:00:00–17:02:15 · **Detections:** 31 Elastic Defend alerts · **Telemetry:** healthy (Defend events + Sysmon logging with correct timestamps — full reconstruction available)
+**Host:** `analysis-host` (<analysis-host-ip>) · **User:** `analyst` · **Detonated:** 2026-08-08 16:59 UTC · **Alert window:** 17:00:00–17:02:15 · **Detections:** 31 Elastic Defend alerts · **Telemetry:** healthy (Defend events + Sysmon logging with correct timestamps — full reconstruction available)
 
 ---
 

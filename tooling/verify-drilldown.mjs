@@ -46,7 +46,7 @@ await page.waitForTimeout(2500)
 await page.screenshot({ path: `${shots}/1-canvas.png`, fullPage: false })
 
 // Find the host node and drill into it.
-const host = page.locator(".react-flow__node").filter({ hasText: "secdis" }).first()
+const host = page.locator(".react-flow__node").filter({ hasText: "analysis-host" }).first()
 const found = await host.count()
 console.log("host node found on canvas:", found > 0)
 if (found) {

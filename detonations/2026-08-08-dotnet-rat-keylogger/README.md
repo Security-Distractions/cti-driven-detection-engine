@@ -2,11 +2,11 @@
 
 *Detonated 2026-08-08 · severity **critical** · 29 correlated alerts across 10 rules*
 
-**Tags:** `malware`, `sample-d`, `rat`, `keylogger`, `persistence`, `run-key`, `masquerading`, `workshop`, `secdis`, `T1547`, `T1056`
+**Tags:** `malware`, `sample-d`, `rat`, `keylogger`, `persistence`, `run-key`, `masquerading`, `workshop`, `analysis-host`, `T1547`, `T1056`
 
 **Alert window:** 2026-08-08T17:47:28Z → 2026-08-08T18:00:44Z
 
-**Host:** secdis (29)
+**Host:** analysis-host (29)
 
 
 ## Analysis
@@ -16,7 +16,7 @@
 > really was `Sample D`.
 
 ### Investigation
-**Host:** `secdis` (192.168.2.2) · **User:** `analyst` · **Detonated:** 2026-08-08 17:47:10 UTC · **Alert window:** 17:47:28–17:51:59 · **Detections:** 25 Elastic Defend alerts · **Family/attribution:** _left for analyst to determine from the IOCs below_
+**Host:** `analysis-host` (<analysis-host-ip>) · **User:** `analyst` · **Detonated:** 2026-08-08 17:47:10 UTC · **Alert window:** 17:47:28–17:51:59 · **Detections:** 25 Elastic Defend alerts · **Family/attribution:** _left for analyst to determine from the IOCs below_
 
 ---
 
@@ -35,7 +35,7 @@ The .NET RAT is a **.NET remote-access trojan (RAT)** with **keylogging**. It se
 - **Keystroke capture** — "Keystrokes Input Capture from a Managed Application" ×2 (T1056.001).
 
 ## Step 5 — Layer 4: Command & Control
-- C2 attempted **via the system proxy `192.168.2.1:3128`**; **no external egress observed** (dead/sinkholed in the isolated lab) — no external C2 IP/domain captured this run.
+- C2 attempted **via the system proxy `<firewall-detonation-if>:3128`**; **no external egress observed** (dead/sinkholed in the isolated lab) — no external C2 IP/domain captured this run.
 - 2× "Malicious Reputation of Executable Download" (component matched a bad-reputation indicator — T1105).
 
 ## Step 6 — MITRE ATT&CK
@@ -64,7 +64,7 @@ Malware Detection ×8 · Startup Persistence (Low-Rep) ×4 · Startup Persistenc
 - Staging dir: `%AppData%\Roaming\MPC-AH`
 
 ### Network artifacts
-- C2 routed to proxy `192.168.2.1:3128`; **no external C2 endpoint resolved/observed** this run.
+- C2 routed to proxy `<firewall-detonation-if>:3128`; **no external C2 endpoint resolved/observed** this run.
 
 
 ## Detection results

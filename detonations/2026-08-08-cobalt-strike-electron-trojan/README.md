@@ -2,11 +2,11 @@
 
 *Detonated 2026-08-08 · severity **critical** · 101 correlated alerts across 15 rules*
 
-**Tags:** `malware`, `sample-e`, `electron-trojan`, `shellcode`, `timestomp`, `ntdll-unhooking`, `c2`, `workshop`, `secdis`
+**Tags:** `malware`, `sample-e`, `electron-trojan`, `shellcode`, `timestomp`, `ntdll-unhooking`, `c2`, `workshop`, `analysis-host`
 
 **Alert window:** 2026-08-08T18:07:44Z → 2026-08-08T18:17:17Z
 
-**Host:** secdis (101)
+**Host:** analysis-host (101)
 
 
 ## Analysis
@@ -16,7 +16,7 @@
 > really was `Sample E`.
 
 ### Investigation
-**Host:** `secdis` (192.168.2.2) · **User:** `analyst` · **Detonated:** 2026-08-08 18:07:15 UTC · **Alert window:** 18:07:44–18:12:15 · **Detections:** 93 alerts · **Family/attribution:** _left for analyst to determine from the IOCs below_
+**Host:** `analysis-host` (<analysis-host-ip>) · **User:** `analyst` · **Detonated:** 2026-08-08 18:07:15 UTC · **Alert window:** 18:07:44–18:12:15 · **Detections:** 93 alerts · **Family/attribution:** _left for analyst to determine from the IOCs below_
 
 ---
 

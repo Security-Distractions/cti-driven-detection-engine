@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "timestamp": "2026-08-17T10:55:58Z",
-  "canvasTitle": "PyInstaller/PyArmor loader \u2014 Defender exclusion abuse (SECDIS, 2026-08-17)",
+  "canvasTitle": "PyInstaller/PyArmor loader \u2014 Defender exclusion abuse (analysis-host, 2026-08-17)",
   "incidentLog": [
     {
       "id": "inc-1",
@@ -67,7 +67,7 @@
         }
       },
       {
-        "id": "host-secdis",
+        "id": "host-analysis-host",
         "type": "customNode",
         "position": {
           "x": 520,
@@ -75,7 +75,7 @@
         },
         "zIndex": 1,
         "data": {
-          "label": "secdis",
+          "label": "analysis-host",
           "type": "workstation",
           "hostname": "",
           "ipAddress": "",
@@ -145,7 +145,7 @@
       {
         "id": "e-attacker-host",
         "source": "attacker-infra",
-        "target": "host-secdis",
+        "target": "host-analysis-host",
         "type": "customEdge",
         "data": {
           "label": "initial access",

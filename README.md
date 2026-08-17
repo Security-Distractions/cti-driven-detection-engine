@@ -48,7 +48,7 @@ five others are under [`detonations/`](detonations/).
 
 ```bash
 export ES_URL=https://your-cluster:9243 ES_USER=... ES_PASS=...
-python3 tooling/elastic_to_canvas.py --host secdis --since 2026-08-17T10:00:00Z --mode host \
+python3 tooling/elastic_to_canvas.py --host analysis-host --since 2026-08-17T10:00:00Z --mode host \
         > canvas/on-host-attack-path.json
 ```
 
@@ -68,3 +68,12 @@ placeholders such as `<ELASTIC-ES-ENDPOINT>` and `<SSH-TUNNEL-HOST>`:
 Internal RFC 1918 addressing and the lab hostnames are kept, because the network documentation is
 worthless without them and they are not reachable from the internet. Malware hashes are kept
 deliberately — they are indicators, meant to be shared.
+
+## A note on redaction
+
+Hostnames and addressing in `lab/` and `detonations/` are replaced with descriptive placeholders —
+`analysis-host`, `<collector-ip>`, `<proxmox-host>` and similar. The topology is documented because
+the detection logic depends on it; the actual addresses are not.
+
+The one exception is `contributions/pfsense-squid-integration/`, which is reproduced exactly as
+submitted upstream. Altering the sample log data there would misrepresent a live pull request.
