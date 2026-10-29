@@ -1,0 +1,67 @@
+title: Suspicious .NET Framework Utility Started Without Arguments
+id: f378e7a8-15ba-48f5-b976-19fecd013933
+status: experimental
+description: |
+    Detects a .NET Framework command-line utility such as RegSvcs.exe, RegAsm.exe or
+    InstallUtil.exe being started with no arguments at all. These utilities act on an assembly
+    named on the command line, so an invocation with an empty argument list is not doing the job
+    the binary exists for. .NET loaders use exactly this shape as a hollowing container: start the
+    signed Microsoft utility suspended, overwrite its image with the payload, resume it, and exit
+    the dropper.
+references:
+    - https://tria.ge/261027-pnet9ady9p
+related:
+    - id: 682ee4ba-481f-4c48-9f31-2b74df146976
+      type: similar
+author: David Clayton - CTI @ thetechcollective
+date: 2026-10-29
+tags:
+    - attack.stealth
+    - attack.t1055.012
+    - attack.privilege-escalation
+    - attack.t1218.009
+    - stp.4
+logsource:
+    category: process_creation
+    product: windows
+    definition: 'Requires process creation logging with command line capture, from Sysmon EventID 1, Windows Security 4688 with command line auditing enabled, or EDR process telemetry. ParentImage is not required by the condition but is carried in fields as a triage aid.'
+detection:
+    # anchor: the binary the behaviour cannot happen without. SOURCED (capture: RegSvcs.exe);
+    # the other four images are broadening alternatives, not narrowing.
+    selection_anchor:
+        - Image|endswith:
+              - '\AddInProcess.exe'
+              - '\AddInProcess32.exe'
+              - '\InstallUtil.exe'
+              - '\RegAsm.exe'
+              - '\RegSvcs.exe'
+        - OriginalFileName:
+              - 'InstallUtil.exe'
+              - 'RegAsm.exe'
+              - 'RegSvcs.exe'
+    # discriminator: the empty argument list. SOURCED - the observed command line was the
+    # quoted image path and nothing else. Both terminal quoting forms are matched.
+    selection_discriminator_no_arguments:
+        CommandLine|endswith:
+            - 'AddInProcess.exe'
+            - 'AddInProcess.exe"'
+            - 'AddInProcess32.exe'
+            - 'AddInProcess32.exe"'
+            - 'InstallUtil.exe'
+            - 'InstallUtil.exe"'
+            - 'RegAsm.exe'
+            - 'RegAsm.exe"'
+            - 'RegSvcs.exe'
+            - 'RegSvcs.exe"'
+    condition: all of selection_*
+fields:
+    - CommandLine
+    - ParentImage
+    - ParentCommandLine
+    - User
+    - IntegrityLevel
+    - sha256
+falsepositives:
+    - An administrator or developer running the utility interactively to read its usage text. The parent process will be a shell or console host under System32 rather than a delivered binary, which is why ParentImage is carried in fields.
+    - Vendor agents and in-house automation that invoke InstallUtil through a wrapper which supplies the assembly through configuration rather than on the command line.
+level: high

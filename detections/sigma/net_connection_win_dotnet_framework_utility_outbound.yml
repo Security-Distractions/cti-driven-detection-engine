@@ -1,0 +1,49 @@
+title: Potential Outbound Connection From .NET Framework Utility
+id: 682ee4ba-481f-4c48-9f31-2b74df146976
+status: experimental
+description: |
+    Detects a .NET Framework command-line utility such as RegSvcs.exe, RegAsm.exe or
+    InstallUtil.exe initiating an outbound network connection. Assembly registration is a
+    local operation, so the utility has no reason to open a socket, and a hollowed instance
+    carrying an infostealer payload uses the signed image for its command and control channel.
+    The rule deliberately does not filter on destination address, because in a proxied
+    environment the only destination the endpoint ever sees is the internal proxy.
+references:
+    - https://tria.ge/261027-pnet9ady9p
+related:
+    - id: f378e7a8-15ba-48f5-b976-19fecd013933
+      type: similar
+author: David Clayton - CTI @ thetechcollective
+date: 2026-10-29
+tags:
+    - attack.command-and-control
+    - attack.t1071
+    - attack.stealth
+    - attack.t1218.009
+    - stp.4
+logsource:
+    category: network_connection
+    product: windows
+    definition: 'Requires network connection logging with the initiating process image, from Sysmon EventID 3 or EDR network telemetry. An Initiated clause is deliberately omitted: the ECS pipeline maps that field to network.direction, which does not carry a boolean, so the clause converts into a query that never matches. On raw Sysmon data an analyst may add Initiated to drop inbound events.'
+detection:
+    # anchor: the connecting process. SOURCED (capture: RegSvcs.exe opened the socket); the
+    # other four images are broadening alternatives. No invariant or discriminator layer
+    # exists for this behaviour - see the validation note.
+    selection_anchor:
+        Image|endswith:
+            - '\AddInProcess.exe'
+            - '\AddInProcess32.exe'
+            - '\InstallUtil.exe'
+            - '\RegAsm.exe'
+            - '\RegSvcs.exe'
+    condition: selection_anchor
+fields:
+    - Image
+    - DestinationIp
+    - DestinationPort
+    - DestinationHostname
+    - User
+falsepositives:
+    - InstallUtil registering an assembly whose installer class reaches a licence server or a configuration endpoint during registration. This is rare but real for commercial .NET components, and the parent process and the assembly argument will identify it.
+    - Host-based telemetry that attributes a connection to the wrong process when a hollowed or injected image is terminated mid-connection.
+level: medium

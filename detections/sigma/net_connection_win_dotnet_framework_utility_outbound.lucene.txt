@@ -1,0 +1,1 @@
+process.executable.caseless:(*\\AddInProcess.exe OR *\\AddInProcess32.exe OR *\\InstallUtil.exe OR *\\RegAsm.exe OR *\\RegSvcs.exe)
