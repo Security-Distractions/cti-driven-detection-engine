@@ -10,6 +10,7 @@ description: |
     the dropper.
 references:
     - https://tria.ge/261027-pnet9ady9p
+    - https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_regasm_no_flag_or_dll_execution.yml
 related:
     - id: 682ee4ba-481f-4c48-9f31-2b74df146976
       type: similar
@@ -40,19 +41,31 @@ detection:
               - 'RegAsm.exe'
               - 'RegSvcs.exe'
     # discriminator: the empty argument list. SOURCED - the observed command line was the
-    # quoted image path and nothing else. Both terminal quoting forms are matched.
+    # quoted image path and nothing else. Four terminal forms are matched: bare name, with
+    # extension, and both quote characters. The single-quote form is taken from SigmaHQ
+    # 651f87f7-12db-47f9-84c5-f27b081b94b6, which covers RegAsm alone.
     selection_discriminator_no_arguments:
         CommandLine|endswith:
+            - 'AddInProcess'
             - 'AddInProcess.exe'
             - 'AddInProcess.exe"'
+            - "AddInProcess.exe'"
+            - 'AddInProcess32'
             - 'AddInProcess32.exe'
             - 'AddInProcess32.exe"'
+            - "AddInProcess32.exe'"
+            - 'InstallUtil'
             - 'InstallUtil.exe'
             - 'InstallUtil.exe"'
+            - "InstallUtil.exe'"
+            - 'RegAsm'
             - 'RegAsm.exe'
             - 'RegAsm.exe"'
+            - "RegAsm.exe'"
+            - 'RegSvcs'
             - 'RegSvcs.exe'
             - 'RegSvcs.exe"'
+            - "RegSvcs.exe'"
     condition: all of selection_*
 fields:
     - CommandLine
